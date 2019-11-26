@@ -1,0 +1,37 @@
+header {
+    background-color: #046DD5;
+    font-family: 'Trebuchet MS';
+    padding: 1em;
+    color: white;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+header > h1 {
+    font-size: 32px;
+}
+
+#signup {
+    font-size: 15px;
+}
+
+article p {
+    font-family: 'Trebuchet MS';
+    font-size: 25px;
+    margin-left: 30px;
+}
+
+article img {
+    float: center;
+    padding: 0px 0px 30px 30px;
+}
+
+footer {
+    font-family: 'Trebuchet MS';
+    font-size: 20px;
+    text-align: right;
+    margin-right: 50px;
+}
