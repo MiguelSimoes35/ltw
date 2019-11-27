@@ -53,7 +53,7 @@ article p {
 article > img {
     float: center;
     width: 30%;
-    padding: 0px 0px 20px 30px;
+    padding: 0% 0% 2% 2%;
 }
 
 footer {

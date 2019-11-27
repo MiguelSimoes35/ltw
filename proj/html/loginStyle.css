@@ -1,0 +1,68 @@
+* {
+    font-family: 'Trebuchet MS';
+}
+
+header {
+    background-color: #046DD5;
+    padding: 1em 1em 1em 1em;
+    color: white;
+    text-align: center;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 32px;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 1px;
+}
+
+div {
+    text-align: center;
+    border-bottom: 2px solid #046DD5;
+    border-top: 2px solid #046DD5;
+    border-left: 2px solid #046DD5;
+    border-right: 2px solid #046DD5;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+form {
+    padding-top: 25px;
+}
+
+input[type=text] {
+    padding: 8px 8%;
+    border: none;
+    border-bottom: 2px solid #046DD5;
+    display: block;
+    margin: 25px auto;
+}
+
+input[type=password] {
+    padding: 8px 8%;
+    border: none;
+    border-bottom: 2px solid #046DD5;
+    display: block;
+    margin: 25px auto;
+}
+
+input[type=submit]{
+    background-color: #046DD5;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 25px auto;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+footer {
+    font-size: 20px;
+    text-align: right;
+    margin-right: 50px;
+}
