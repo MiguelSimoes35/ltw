@@ -15,7 +15,7 @@
     if($password == $r_password){
         $stmt = $db->prepare('INSERT INTO User VALUES(?, ?, ?, ?)');
         $stmt->execute(array($username, $password, $name, $email));         // IMPORTANTE - mudar a forma de guardar a password para encriptada
-        header('Location: initialPage.html');
+        header('Location: ../html/main.php');
         exit;
     }
     
