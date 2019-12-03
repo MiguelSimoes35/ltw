@@ -7,8 +7,6 @@
     <head>
         <title>EasyRent FrontPage</title>
         <meta charset="UTF-8">
-        <link href="../css/initPageStyle.css" rel="stylesheet">
-        <link href="../css/loginStyle.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
     </head>
     <body>
