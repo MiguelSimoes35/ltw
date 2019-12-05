@@ -8,10 +8,11 @@
         <title>EasyRent FrontPage</title>
         <meta charset="UTF-8">
         <link href="../css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <header>
-            <h1> <a href="../html/main.php">EasyRent</a> </h1>
+            <h1><a href="../html/main.php">EasyRent</a></h1>
             <?php            
             //template_user_section(); 
             ?>

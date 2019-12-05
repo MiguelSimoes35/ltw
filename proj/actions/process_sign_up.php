@@ -4,7 +4,7 @@
     // variables
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $r_password = $_POST['repeat_password'];
+    $r_password = $_POST['confirm_password'];
     $name = $_POST['name'];
     $email = $_POST['email'];
 
@@ -18,7 +18,7 @@
         header('Location: ../html/main.php');
         exit;
     }
-    header('Location: sign_up.php');
+    header('Location: ../html/sign_up.php');
     
 
 

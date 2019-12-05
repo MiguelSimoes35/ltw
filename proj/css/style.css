@@ -15,7 +15,7 @@ a {
 
 body > header {
     background-color: #046DD5;
-    pointer-events: none;
+    /*pointer-events: none;*/
     text-decoration: none;
     color: white;
     font-style: normal;
@@ -41,7 +41,7 @@ body > footer p {
 /*----------------------*/
 body > .authentication {
     border: 2px solid #046DD5;  
-    background-color: aliceblue;
+    background-color: #b3cde0;
     margin: 30px auto;
     width: 30em;
 }
@@ -87,7 +87,7 @@ input {
 }
 
 input[type=submit]{
-    background-color: #046DD5;
+    background-color: #df622c;
     border: none;
     color: white;
     padding: 1em 2em;
@@ -102,8 +102,10 @@ input[type=submit]{
 /*------------------*/
 
 body > #content {
-    background-color: aliceblue;
-    margin: 1em 2em;
+    background-color: #b3cde0;
+    width: 80em;
+    margin: 2em auto;
+    padding: 1em;
 }
 
 article p {
@@ -121,11 +123,112 @@ article > img {
 /*---- Search ----*/
 /*----------------*/
 
+#search {
+    background-color: #03396c;
+    margin: 1em auto;
+    max-width: 90%;
+    border-radius: 1em;
+    border: 2px solid #046DD5;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+}
+
 #search input {
-    width: 20%;
+    width: 12em;
     margin: 1em;
 }
 
+/*#search #header {
+    margin: auto auto;
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+}*/
+
+#search #where {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+#search #date {
+    display: flex;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+#search #capacity {
+    grid-column-start: 1 / 2;
+    grid-row-start: 2 / 3;
+}
+
+#search #price_range {
+    display: flex;
+    grid-column-start: 2 / 3;
+    grid-row-start: 2 / 3;
+}
+
+#search #submit_search {
+    width: 50%;
+    margin: 1em;
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+}
+
+/*---------------*/
+/*---- Place ----*/
+/*---------------*/
+
+article.place {
+    background-color: white;
+    width: 80%;
+    margin: 1em auto;
+    display: flex;
+}
+
+article.place div.photo{
+    width: 40%;
+}
+
+article.place div.place_info{
+    width: 60%;
+    margin: 1em;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto;
+}
+
+article.place div.place_info .title {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    margin: 0;
+}
+
+article.place div.place_info .location {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    margin: 0;
+
+    color: gray;
+}
+
+article.place div.place_info .capacity {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    margin: 0;
+}
+
+article.place div.place_info .price {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    margin: 0;
+    text-align: right;
+}
+
+article.place div.place_info .owner {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+    margin: 0;
+}
 
 
 /*---------------*/

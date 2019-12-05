@@ -2,14 +2,25 @@
     include_once('../includes/include_database.php');
     include_once('../templates/template_generic.php');
     include_once('../templates/template_search.php');
+    include_once('../templates/template_place.php');
+    include_once('../database/access_database.php');
+
+    $places = getAllPlaces();
 
     template_header();
 ?>
 <section id="content">
 <?php
     template_search();
+
+    //print_r($places);
+    
+    //template_place($places[0]);
+    foreach ($places as $place) {
+        template_place($place);
+    }
 ?>
-    <section id="popular_places">
+    <!--<section id="popular_places">
         <h2>Most popular places</h2>
         <article>
             <img src="../resources/beachOpener.jpg" alt="Beach">
@@ -28,7 +39,7 @@
             <img src="../resources/winterSeason.jpg" alt="Winter">
             <img src="../resources/springSeason.jpg" alt="Spring">
         </article>
-    </section>
+    </section> -->
 
 </section>
 <?php

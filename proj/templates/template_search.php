@@ -2,10 +2,14 @@
     function template_search() {
 ?>
     <section id = "search">
-        <input type="text" value="Where?">
-        <label> From: <input type="date"> </label>
-        <label> To: <input type="date"> </label>
-        <label>Capacity
+        
+        <form action="../" method="post">
+            <input type="text" id="where" value="Where?">
+            <div id="date">
+                <label> From: <input type="date"> </label>
+                <label> To: <input type="date"> </label>
+            </div>
+        
             <div id="capacity">
                 <label for="min_capacity">Min</label>
                 <select name="min_capacity" id="min_capatity">
@@ -36,16 +40,15 @@
                     <option value="10">10+</option>
                 </select>            
             </div>
-        </label>
-        <label>Price range
             <div id="price_range">
                 <label for="min">Min</label>
                 <input type="number" id="min" name="min" value="50" step="1">
                 <label for="max">Max</label>
                 <input type="number" id="max" name="max" value="100" step="1">
             </div>
-        </label>
-        <input type="submit" id="submit_search" value="Search Place">
+
+            <input type="submit" id="submit_search" value="Search Place">
+        </form>
     </section>
 <?php        
     }

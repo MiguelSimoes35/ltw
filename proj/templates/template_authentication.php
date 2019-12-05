@@ -3,7 +3,7 @@
 ?>
     <section id="login" class="authentication">
         <header><h2>Login</h2></header>
-        <form action="../actions/process_sign_up.php" method="post">
+        <form action="../actions/process_login.php" method="post">
             <label for="username" id="user">Username</label>
             <input type="text" id="username" name="username" required>
             <label for="pass" id="password">Password</label>
@@ -23,14 +23,14 @@
         <header><h2>Sign up</h2></header>
         <form action="../actions/process_sign_up.php" method="post">
                 
-            <label for="username" id="user">Username</label>
+            <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
             
-            <label for="password" id="password">Password</label>
+            <label for="password">Password</label>
             <input type="password" id="password" name="password" minlength="8" required>
             
-            <label for="password2" id="password2">Confirm Password</label>
-            <input type="password" id="password2" name="confirm_password" minlength="8" required>
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" minlength="8" required>
             
             <label for="name" id="full_name">Full name</label>
             <input type="text" id="name" name="name" required>
