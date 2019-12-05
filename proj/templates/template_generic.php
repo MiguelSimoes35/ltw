@@ -1,4 +1,7 @@
 <?php
+
+    include_once('../includes/session.php');
+
     function template_header() {
 ?>
 
@@ -38,6 +41,7 @@
 <div id = "header_user_section">
     <a href="profile.php">
     <p>Username</p>
+    <p> <?= $_SESSION['username']  ?> </p>
     <img src="../resources/pic1.png" alt="Profile Picture Icon" style="width:50px;height:50px;">
     </a>
 </div>

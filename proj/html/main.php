@@ -4,11 +4,25 @@
     include_once('../templates/template_search.php');
     include_once('../templates/template_place.php');
     include_once('../database/access_database.php');
+    include_once('../includes/session.php');
 
     $places = getAllPlaces();
 
     template_header();
 ?>
+
+<?php  
+    if(isset($_SESSION['username'])){ ?>
+    
+        <section id="user">
+            Welcome, <?= $_SESSION['username']  ?> 
+        </section>
+    
+<?php }
+
+
+?>
+
 <section id="content">
 <?php
     template_search();
