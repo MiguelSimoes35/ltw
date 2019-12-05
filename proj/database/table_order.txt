@@ -1,0 +1,19 @@
+DATABASE TABLE ORDER ( to order file extracted from SQLStudio)
+
+1-User
+
+Owner
+
+Tourist
+
+Location
+
+Place
+
+Notification
+
+Reservation
+
+Review 
+
+Photo

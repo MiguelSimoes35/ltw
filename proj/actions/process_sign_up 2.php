@@ -17,8 +17,7 @@
         $stmt->execute(array($username, $password, $name, $email));         // IMPORTANTE - mudar a forma de guardar a password para encriptada
         header('Location: initialPage.html');
         exit;
-    }
-    
+    } 
 
 
 ?>

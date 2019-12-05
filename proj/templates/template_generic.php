@@ -16,8 +16,9 @@
     <body>
         <header>
             <h1><a href="../html/main.php">EasyRent</a></h1>
-            <?php            
-            template_user_section(); 
+            <?php
+            if (isset($_SESSION['username']))        
+                template_user_section(); 
             ?>
 
         </header>

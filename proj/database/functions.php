@@ -39,7 +39,7 @@
 
     $user = $stmt->fetch();
 
-    return $user !== false && password_verify($password, $user['password']);
+    return $user !== false && $password == $user['password']/*password_verify($password, $user['password']) <- adicionar quando houver hash e tal */;
 
     }
 
