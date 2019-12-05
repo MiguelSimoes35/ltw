@@ -14,7 +14,7 @@
         <header>
             <h1><a href="../html/main.php">EasyRent</a></h1>
             <?php            
-            //template_user_section(); 
+            template_user_section(); 
             ?>
 
         </header>
@@ -36,10 +36,9 @@
     function template_user_section() {
 ?>
 <div id = "header_user_section">
-    <a href="profile.php">
-    <p>Username</p>
-    <img src="../resources/pic1.png" alt="Profile Picture Icon" style="width:50px;height:50px;">
-    </a>
+    <a href="profile.php"><img src="../resources/pic1.png" alt="Profile Picture Icon" style="width:40px;height:40px;"></a>
+    <a href="profile.php">Username</a>
+    <form action="../actions/process_logout.php"><input type="submit" id="logout" value="Logout"></form>
 </div>
 <?php
     }

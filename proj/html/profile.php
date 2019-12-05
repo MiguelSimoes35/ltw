@@ -4,28 +4,26 @@
     template_header();
 ?>
 <section id="content">
-    <section id="profile">
-        <div id="your_places">
-            <b>Your Places</b>
+    <section id="profile_section">
+        <div id="profile">
+            <div id="profile_photo">
+                <img src="../resources/pic1.png" alt="Profile Picture Icon"  style="width:150px;height:150px;"> 
+            </div>
+            <div id="profile_info"></div>
+            <button id="edit_profile">Edit Profile</button>
         </div>
 
-        <div id="reservations">
-            <b>Reservations</b>
-        </div>
-
-        <div id="edit_profile">
-            <img src="../resources/pic1.png" alt="Profile Picture Icon"  style="width:100px;height:100px;">
-            <p><a href="#" class="text">Edit Profile</a></p>
-        </div>
-
-        <div id="message">
-            <img src="../resources/pic2.png" alt="Message icon"  style="width:100px;height:100px;">
-            <p><a href="#" class="text">Messages</a></p>
-        </div>
-
-        <div id="add_place">
-            <!--<button type="button">Add a Place!</button>-->
-            <a href="#" class="button">Add a Place!</a>
+        <div id="data">
+            <ul>
+                <li><b>My Reservations </b></li>
+                <li><b>My Places</b></li>
+                <li><b>Favorite Places</b></li>
+                <li><b>Messages</b></li>
+                <li><b>Notifications</b></li>
+            </ul>
+            <div>
+                
+            </div>  
         </div>
     </section>
 </section>
