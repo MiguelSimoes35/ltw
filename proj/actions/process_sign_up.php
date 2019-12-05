@@ -1,5 +1,7 @@
 <?php
-    include_once('../includes/include_database.php');
+    
+    include_once('../database/functions.php');
+    include_once('../includes/session.php');
 
     // variables
     $username = $_POST['username'];
@@ -8,17 +10,30 @@
     $name = $_POST['name'];
     $email = $_POST['email'];
 
-    // access database
-    $db = Database::instance()->db();
-
-    // insert the new user
-    if($password == $r_password){
-        $stmt = $db->prepare('INSERT INTO User VALUES(?, ?, ?, ?)');
-        $stmt->execute(array($username, $password, $name, $email));         // IMPORTANTE - mudar a forma de guardar a password para encriptada
-        header('Location: ../html/main.php');
-        exit;
+    if($password != $r_password){
+        // create error message
+        header('Location: ../html/sign_up.php');
+        
     }
-    header('Location: ../html/sign_up.php');
+    
+
+    if(!available_username($username)){
+        // create error message
+        header('Location: ../html/sign_up.php');
+        
+    }
+    
+
+    if(insert_user($username, $password, $name, $email)){
+        $_SESSION['username'] = $username;
+        header('Location: ../html/main.php');
+        
+    }
+    else{
+        header('Location: ../html/sign_up.php');
+    }
+    
+    
     
 
 
