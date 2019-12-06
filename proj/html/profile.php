@@ -1,5 +1,12 @@
 <?php
     include_once('../templates/template_generic.php');
+    include_once('../database/access_database.php');
+
+    if(!isset($_SESSION['username'])){
+        die(header('Location: login.php'));
+    }
+
+    $user = getUserData($_GET['user']);
 
     template_header();
 ?>
@@ -22,7 +29,7 @@
                 <li><b>Notifications</b></li>
             </ul>
             <div>
-                
+
             </div>  
         </div>
     </section>

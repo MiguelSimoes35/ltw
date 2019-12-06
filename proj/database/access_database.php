@@ -2,6 +2,14 @@
 
     include_once('../includes/include_database.php');
 
+    function getUserData($username) {
+        $db = Database::instance()->db();
+        
+        $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
+        $stmt->execute(array($username));
+        return $stmt->fetch();
+    }
+
     function getAllPlaces() {
         $db = Database::instance()->db();
         

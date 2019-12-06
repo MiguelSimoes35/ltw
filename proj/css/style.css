@@ -38,6 +38,10 @@ body>header a {
     align-items: center;
 }
 
+#header_user_section > * {
+    margin: .5em;    
+}
+
 body>footer {
     background-color: darkgrey;
     margin: 0px;
@@ -298,7 +302,7 @@ article.place div.place_info .owner {
 }
 
 #profile_photo {
-    
+    display: inline;
 }
 
 #profile_info {
