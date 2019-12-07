@@ -11,7 +11,7 @@
             <input type="submit" value="Login">
         </form>
 
-        <footer><a href="../html/sign_up.php">Not registered yet? Sign Up!</a></footer>
+        <footer><a href="../pages/sign_up.php">Not registered yet? Sign Up!</a></footer>
     </section>
 
 <?php
@@ -47,7 +47,7 @@
             <input type="submit" value="Sign up">
         </form>
 
-        <footer><a href="../html/login.php">Have an account already?</a></footer>
+        <footer><a href="../pages/login.php">Have an account already?</a></footer>
     </section>
 <?php
     }

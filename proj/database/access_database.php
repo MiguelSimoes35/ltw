@@ -1,5 +1,4 @@
 <?php
-
     include_once('../includes/include_database.php');
 
     function getUserData($username) {
@@ -18,9 +17,7 @@
         return $stmt->fetchAll();
     }
 
-    function getPlacesBySearch(){
-
-    }
+    function getPlacesBySearch(){}
 
     function getUserPlaces($user_id){
         $db = Database::instance()->db();
@@ -28,6 +25,22 @@
         $stmt = $db->prepare('SELECT * FROM Place WHERE owner = ?');
         $stmt->execute(array($user_id));
         return $stmt->fetchAll();
+    }
+
+    function getUserPlacesCount($user_id){
+        $db = Database::instance()->db();
+        
+        $stmt = $db->prepare('SELECT COUNT(*) AS properties FROM Place WHERE owner = ?');
+        $stmt->execute(array($user_id));
+        return $stmt->fetch()['properties'];
+    }
+
+    function getUserReservationsCount($user_id){
+        $db = Database::instance()->db();
+        
+        $stmt = $db->prepare('SELECT COUNT(*) AS reservations FROM Reservation WHERE tourist = ?');
+        $stmt->execute(array($user_id));
+        return $stmt->fetch()['reservations'];
     }
 
     function insertPlace($user_id, $title, $price, $description, $address, $city, $country) {
@@ -52,8 +65,4 @@
         $location->execute(array($city, $country));
         return $location->fetch();
     }
-
-
-
-
 ?>

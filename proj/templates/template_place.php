@@ -2,10 +2,10 @@
     function template_place($place){
         $location = getLocation($place['location_id']);
 ?>  
-    <a href="../html/place.php?id= <?=$place['id']?>">
+    <a href="../pages/place.php?id= <?=$place['id']?>">
         <article class="place">
             <div class="place_photo">
-                <img src="../resources/beachOpener.jpg" alt="Beach" style="max-width:100%;height:100%;">
+                <img src="../resources/beachOpener.jpg" alt="Beach" style="max-width:100%;">
             </div>
             <div class="place_info">
                 <h2 class="title"><?=$place['title']?></h3>

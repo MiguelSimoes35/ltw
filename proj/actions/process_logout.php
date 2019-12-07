@@ -6,5 +6,5 @@
 
   //$_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged out!');
 
-  header('Location: ../html/login.php');
+  header('Location: ../pages/login.php');
 ?>

@@ -16,8 +16,12 @@
             <div id="profile_photo">
                 <img src="../resources/pic1.png" alt="Profile Picture Icon"  style="width:150px;height:150px;"> 
             </div>
-            <div id="profile_info"></div>
-            <button id="edit_profile">Edit Profile</button>
+            <div id="profile_info">
+                <p><b> <?= $_GET['user'] ?> </b></p>
+                <p><b> No. of Properties: <?= getUserPlacesCount($_GET['user']) ?> </b></p>
+                <p><b> No. of Reservations: <?= getUserReservationsCount($_GET['user']) ?> </b></p>
+            </div>
+            <?= edit_profile_button() ?>
         </div>
 
         <div id="data">

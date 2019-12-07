@@ -309,9 +309,11 @@ article.place div.place_info .owner {
     background-color: aliceblue;
     border-radius: 1em;
     width: 90%;
-    height: 200px;
+    height: 150px;
     margin: 1em auto;
+    padding-top: 1em;
 }
+
 
 #profile button#edit_profile {
     background-color: #df622c;
@@ -319,6 +321,7 @@ article.place div.place_info .owner {
     border-color: #df622c;
     border-radius: 1em;
     padding: 1em;
+    margin-bottom: 1em;
 }
 
 #profile_section ul {
