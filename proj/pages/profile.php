@@ -14,7 +14,7 @@
     <section id="profile_section">
         <div id="profile">
             <div id="profile_photo">
-                <img src="../resources/pic1.png" alt="Profile Picture Icon"  style="width:150px;height:150px;"> 
+                <img src=<?= get_user_photo($_GET['user']) ?> alt="Profile Picture Icon"  style="width:150px;height:150px;"> 
             </div>
             <div id="profile_info">
                 <p><b> <?= $_GET['user'] ?> </b></p>

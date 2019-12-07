@@ -50,4 +50,13 @@
 
         return $stmt->fetch()['username'];
     }
+
+    function get_user_photo($username){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
+        $stmt->execute(array($username));
+
+        return $stmt->fetch()['path'];
+    }
 ?>
