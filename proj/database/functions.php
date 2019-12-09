@@ -56,7 +56,10 @@
 
         $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
         $stmt->execute(array($username));
-
-        return $stmt->fetch()['path'];
+        $path = $stmt->fetch()['path'];
+        if(!$path) {
+            $path = "../resources/pic1.png";
+        }
+        return $path;
     }
 ?>

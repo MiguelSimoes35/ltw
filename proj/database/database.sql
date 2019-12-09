@@ -89,10 +89,10 @@ DROP TABLE IF EXISTS Photo;
 
 CREATE TABLE Photo (
     id    INTEGER PRIMARY KEY,
-    path  VARCHAR NOT NULL
+    path  TEXT    NOT NULL
                   UNIQUE,
-    user  TEXT    REFERENCES User (username),
-    place INTEGER REFERENCES Place (id),
+    user  TEXT    REFERENCES User,
+    place INTEGER REFERENCES Place,
     CHECK ( (user IS NOT NULL AND 
              place IS NULL) OR 
             (user IS NULL AND 

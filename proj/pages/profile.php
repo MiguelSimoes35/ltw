@@ -1,20 +1,22 @@
 <?php
     include_once('../templates/template_generic.php');
     include_once('../database/access_database.php');
+    include_once('../database/functions.php');
 
     if(!isset($_SESSION['username'])){
         die(header('Location: login.php'));
     }
 
     $user = getUserData($_GET['user']);
-
+    $photo = get_user_photo($_GET['user']);
+    
     template_header();
 ?>
 <section id="content">
     <section id="profile_section">
         <div id="profile">
             <div id="profile_photo">
-                <img src=<?= get_user_photo($_GET['user']) ?> alt="Profile Picture Icon"  style="width:150px;height:150px;"> 
+                <img src="<?= $photo ?>" alt="Profile Picture Icon"  style="width:150px;height:150px;"> 
             </div>
             <div id="profile_info">
                 <p><b> <?= $_GET['user'] ?> </b></p>
