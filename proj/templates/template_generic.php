@@ -12,13 +12,14 @@
         <meta charset="UTF-8">
         <link href="../css/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="../javascript/search.js" defer></script>
     </head>
     <body>
         <header>
             <h1><a href="../html/main.php">EasyRent</a></h1>
             <?php
             if (isset($_SESSION['username']))        
-                template_user_section(); 
+                template_user_section();
             ?>
 
         </header>

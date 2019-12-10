@@ -1,20 +1,36 @@
 <?php 
     function template_search() {
+
+        $countries = getAllCountries();
 ?>
     <section id = "search">
         
-        <form action="../" method="post">
-            <input type="text" id="where" value="Where?">
+        <form action="../html/search.php" method="get">
+            <!--<input type="text" id="where" name="where" placeholder="Where?" required>-->
+            <select name="where_country" id="country" value="">
+                <option value="undefined"></option>
+
+                <?php foreach ($countries as $country) {
+                    ?>
+                    <option value=<?=$country['country']?>><?=$country['country']?></option>
+                    <?php
+                } 
+                ?>
+            </select>
+            <select name="city" id="city" value="">
+                <option value="undefined"></option>
+            </select>
             <div id="date">
                 <label for="checkin">Check-In</label>
-                <input type="date" id="checkin">
+                <input type="date" name="checkin" id="checkin" required>
                 <label for="checkout">Check-Out</label>
-                <input type="date" id="checkout"> 
+                <input type="date" name="checkout" id="checkout" required> 
             </div>
         
             <div id="capacity">
-                <label for="min_capacity">Capacity</label>
-                <select name="min_capacity" id="min_capatity">
+                <label for="capacity">Capacity</label>
+                <select name="capacity" id="capacity" placeholder="Capacity">
+                    <option value="undefined"></option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -30,9 +46,9 @@
             
             <div id="price_range">
                 <label for="min">Min</label>
-                <input type="number" id="min" name="min" value="50" step="1">
+                <input type="number" id="min" name="minimum_price" placeholder="Minimum price" step="1"> <!-- Only max maybe -->
                 <label for="max">Max</label>
-                <input type="number" id="max" name="max" value="100" step="1">
+                <input type="number" id="max" name="maximum_price" placeholder="Maximum price" step="1">
             </div>
 
             <input type="submit" id="submit_search" value="Search Place">
