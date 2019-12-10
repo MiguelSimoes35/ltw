@@ -363,6 +363,30 @@ article.place div.place_info .owner {
     color: white;
 }
 
+/*-------------------*/
+/*--- Reservation ---*/
+/* ------------------*/
+
+#reservation_info{
+    width:100%;
+}
+
+#check-in{
+    width: 50%;
+    border: none;
+    position: relative;
+    left: 0%;
+}
+
+#check-out{
+    width: 50%;
+    border: none;
+    position: relative;
+    left: 0%;
+}
+
+
+
 
 /*#profile > a > p {
     left: 86%;

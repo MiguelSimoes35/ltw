@@ -29,7 +29,7 @@
         $stmt->execute(array($username));
         $user = $stmt->fetch();
 
-        return $user !== false && password_verify($password, $user['password']);
+        return $user !== false && $password == password_verify($password, $user['password']);
     }
 
 
@@ -50,4 +50,63 @@
 
         return $stmt->fetch()['username'];
     }
+
+    function get_place_data($id){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Place WHERE id = ?');
+        $stmt->execute(array($id));
+
+        return $stmt->fetch();
+
+    }
+
+    function valid_dates($checkin, $checkout, $place_id){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Reservation WHERE (id = ? AND checkin <= ? AND checkout >= ?)');
+        $stmt->execute(array($place_id, $checkout, $checkin));
+
+        $number = count($stmt->fetch()['id']);
+
+        if($number == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function make_reservation($checkin, $checkout, $place_id, $user, $total_price){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('INSERT INTO Reservation(checkin, checkout, total_price, place_id, tourist) VALUES(?, ?, ?, ?, ?)');
+        $stmt->execute(array($checkin, $checkout, $total_price, $place_id, $user));
+
+        return true;
+    }
+
+    function calculate_total_price($checkin, $checkout, $place_id){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT price_day FROM Place WHERE id = ?');
+        $stmt->execute(array($place_id));
+
+        $price = $stmt->fetch()['price_day'];
+
+        // calculates duration 
+        $date1=date_create($checkin);
+        $date2=date_create($checkout);
+        $diff = date_diff($date1,$date2);
+        $duration =  $diff->format("%a");
+
+        $total_price = $duration * $price;
+
+        return $total_price;
+    }
+
 ?>

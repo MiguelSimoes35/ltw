@@ -64,11 +64,11 @@ DROP TABLE IF EXISTS Reservation;
 
 CREATE TABLE Reservation (
     id          INTEGER  PRIMARY KEY,
-    date        DATE     NOT NULL,
-    duration    DATETIME NOT NULL,
+    checkin     DATE     NOT NULL,
+    checkout    DATE     NOT NULL,
     total_price INTEGER  NOT NULL,
     place_id    INTEGER  REFERENCES Place (id),
-    tourist     TEXT     REFERENCES Tourist (username) 
+    tourist     TEXT    REFERENCES User (username) 
 );
 
 
