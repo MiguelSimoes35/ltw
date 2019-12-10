@@ -29,7 +29,7 @@
         $stmt->execute(array($username));
         $user = $stmt->fetch();
 
-        return $user !== false && $password == $user['password']/*password_verify($password, $user['password']) <- adicionar quando houver hash e tal */;
+        return $user !== false && password_verify($password, $user['password']);
     }
 
 
@@ -49,17 +49,5 @@
         $stmt->execute(array($id));
 
         return $stmt->fetch()['username'];
-    }
-
-    function get_user_photo($username){
-        $db = Database::instance()->db();
-
-        $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
-        $stmt->execute(array($username));
-        $path = $stmt->fetch()['path'];
-        if(!$path) {
-            $path = "../resources/pic1.png";
-        }
-        return $path;
     }
 ?>

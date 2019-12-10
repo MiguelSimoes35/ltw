@@ -1,7 +1,6 @@
 <?php
     include_once('../templates/template_generic.php');
     include_once('../database/access_database.php');
-    include_once('../database/functions.php');
 
     if(!isset($_SESSION['username'])){
         die(header('Location: login.php'));
@@ -23,7 +22,9 @@
                 <p><b> No. of Properties: <?= getUserPlacesCount($_GET['user']) ?> </b></p>
                 <p><b> No. of Reservations: <?= getUserReservationsCount($_GET['user']) ?> </b></p>
             </div>
-            <?= edit_profile_button() ?>
+            <?php if($_GET['user'] == $_SESSION['username']) { ?>
+                <button id="edit_profile" > <a href= "../pages/edit_profile.php"> Edit Profile </a></button>
+            <?php } ?>
         </div>
 
         <div id="data">

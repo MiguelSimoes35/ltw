@@ -1,5 +1,4 @@
 <?php
-
     include_once('../includes/session.php');
 
     function template_header() {
@@ -43,12 +42,5 @@
             <form action="../actions/process_logout.php"><input type="submit" id="logout" value="Logout"></form>
         </div>
 <?php
-    }
-    function edit_profile_button() {
-        if($_GET['user'] == $_SESSION['username']) {
-?>
-    <button id="edit_profile">Edit Profile
-<?php
-        }
     }
 ?>

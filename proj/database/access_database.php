@@ -65,4 +65,16 @@
         $location->execute(array($city, $country));
         return $location->fetch();
     }
+
+    function get_user_photo($username){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
+        $stmt->execute(array($username));
+        $path = $stmt->fetch()['path'];
+        if(!$path) {
+            $path = "../resources/pic1.png";
+        }
+        return $path;
+    }
 ?>

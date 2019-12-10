@@ -98,6 +98,10 @@ body>.authentication {
     text-align: center;
 }
 
+#edit_username {
+    text
+}
+
 
 /*------------------------*/
 /*-- Buttons and Inputs --*/
@@ -315,14 +319,16 @@ article.place div.place_info .owner {
     padding-top: 1em;
 }
 
-
 #profile button#edit_profile {
     background-color: #df622c;
-    color: white;
     border-color: #df622c;
     border-radius: 1em;
     padding: 1em;
     margin-bottom: 1em;
+}
+
+#profile button > a {
+    color: white;
 }
 
 #profile_section ul {
