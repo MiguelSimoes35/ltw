@@ -12,13 +12,12 @@
     //echo "success!";
     //$_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');
     $_SESSION['username'] = $username;
-    header('Location: ../html/main.php');
+    header('Location: ../pages/main.php');
     //header('Location: ../pages/list.php');
   } 
   else {
     echo ":(";
     //$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');
-    //header('Location: ../pages/login.php');
-    header("Location: ../html/login.php");
+    header('Location: ../pages/login.php');
   }
 ?>

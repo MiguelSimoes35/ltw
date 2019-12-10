@@ -12,28 +12,23 @@
 
     if($password != $r_password){
         // create error message
-        header('Location: ../html/sign_up.php');
-        
+        header('Location: ../pages/sign_up.php');
     }
     
 
     if(!available_username($username)){
         // create error message
-        header('Location: ../html/sign_up.php');
-        
+        header('Location: ../pages/sign_up.php');
     }
     
 
-    if(insert_user($username, $password, $name, $email)){
+    if(insert_user($username, $password, $name, $email)) {
         $_SESSION['username'] = $username;
-        header('Location: ../html/main.php'); 
+        
+        header('Location: ../pages/main.php'); 
     }
-    else{
-        header('Location: ../html/sign_up.php');
+    else {
+        header('Location: ../pages/sign_up.php');
     }
-    
-    
-    
-
 
 ?>

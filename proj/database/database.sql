@@ -64,11 +64,11 @@ DROP TABLE IF EXISTS Reservation;
 
 CREATE TABLE Reservation (
     id          INTEGER  PRIMARY KEY,
-    date        DATE     NOT NULL,
-    duration    DATETIME NOT NULL,
+    checkin     DATE     NOT NULL,
+    checkout    DATE     NOT NULL,
     total_price INTEGER  NOT NULL,
     place_id    INTEGER  REFERENCES Place (id),
-    tourist     TEXT     REFERENCES Tourist (username) 
+    tourist     TEXT    REFERENCES User (username) 
 );
 
 
@@ -89,10 +89,10 @@ DROP TABLE IF EXISTS Photo;
 
 CREATE TABLE Photo (
     id    INTEGER PRIMARY KEY,
-    path  VARCHAR NOT NULL
+    path  TEXT    NOT NULL
                   UNIQUE,
-    user  TEXT    REFERENCES User (username),
-    place INTEGER REFERENCES Place (id),
+    user  TEXT    REFERENCES User,
+    place INTEGER REFERENCES Place,
     CHECK ( (user IS NOT NULL AND 
              place IS NULL) OR 
             (user IS NULL AND 

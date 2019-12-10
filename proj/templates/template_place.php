@@ -1,8 +1,8 @@
 <?php
     function template_place($place){
-        $location = getLocation($place['location_id']);
+    $location = getLocation($place['location_id']);
 ?>  
-    <a href="../html/place.php?id=<?=$place['id']?>">
+    <a href="../pages/place.php?id=<?=$place['id']?>">
         <article class="place">
             <div class="place_photo">
                 <img src="../resources/beachOpener.jpg" alt="Beach" style="max-width:100%;">

@@ -1,5 +1,4 @@
 <?php
-
     include_once('../includes/include_database.php');
 
     function getUserData($username) {
@@ -62,6 +61,22 @@
         return $stmt->fetchAll();
     }
 
+    function getUserPlacesCount($user_id){
+        $db = Database::instance()->db();
+        
+        $stmt = $db->prepare('SELECT COUNT(*) AS properties FROM Place WHERE owner = ?');
+        $stmt->execute(array($user_id));
+        return $stmt->fetch()['properties'];
+    }
+
+    function getUserReservationsCount($user_id){
+        $db = Database::instance()->db();
+        
+        $stmt = $db->prepare('SELECT COUNT(*) AS reservations FROM Reservation WHERE tourist = ?');
+        $stmt->execute(array($user_id));
+        return $stmt->fetch()['reservations'];
+    }
+
     function insertPlace($user_id, $title, $price, $description, $address, $city, $country) {
         $db = Database::instance()->db();
 
@@ -93,7 +108,15 @@
         return $countries->fetchAll();
     }
 
+    function get_user_photo($username){
+        $db = Database::instance()->db();
 
-
-
+        $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
+        $stmt->execute(array($username));
+        $path = $stmt->fetch()['path'];
+        if(!$path) {
+            $path = "../resources/pic1.png";
+        }
+        return $path;
+    }
 ?>
