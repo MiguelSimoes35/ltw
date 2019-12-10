@@ -5,7 +5,7 @@
 ?>
     <section id = "search">
         
-        <form action="../html/search.php" method="get">
+        <form action="../pages/search.php" method="get">
             <!--<input type="text" id="where" name="where" placeholder="Where?" required>-->
             <select name="where_country" id="country" value="">
                 <option value="undefined"></option>
