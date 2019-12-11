@@ -51,6 +51,34 @@
         return $stmt->fetch()['username'];
     }
 
+    function update_password($username, $password) {
+        $db = Database::instance()->db();
+
+        $hash_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $db->prepare('UPDATE User SET password = ? WHERE username = ?');
+        $stmt->execute(array($hash_password, $username));
+
+        return true;
+    }
+
+    function update_name($username, $name) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE User SET name = ? WHERE username = ?');
+        $stmt->execute(array($name, $username));
+
+        return true;
+    }
+
+    function update_email($username, $email) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE User SET email = ? WHERE username = ?');
+        $stmt->execute(array($email, $username));
+
+        return true;
+    }
+
     function get_place_data($id){
 
         $db = Database::instance()->db();

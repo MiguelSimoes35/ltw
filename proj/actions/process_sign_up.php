@@ -24,7 +24,6 @@
 
     if(insert_user($username, $password, $name, $email)) {
         $_SESSION['username'] = $username;
-        
         header('Location: ../pages/main.php'); 
     }
     else {

@@ -6,15 +6,11 @@
         die(header('Location: login.php'));
     }
 
-    
-    
     template_header();
 
     $place = get_place_data($_GET['id']);
     $place_id = $_GET['id'];
-
 ?> 
-
 
 <section id="content">
 

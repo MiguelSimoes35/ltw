@@ -72,10 +72,15 @@ body>.authentication {
     width: 30em;
 }
 
-.authentication header,
-.authentication footer {
+.authentication header {
     padding: 1em;
     text-align: center;
+}
+
+.authentication footer {
+    padding: 0em 1em 1em 1em;
+    text-align: center;
+
 }
 
 .authentication>form {
@@ -98,10 +103,10 @@ body>.authentication {
     text-align: center;
 }
 
-#edit_username {
-    text
+#edit_profile > form > #edit_username {
+    width: 100%;
+    box-sizing: border-box;
 }
-
 
 /*------------------------*/
 /*-- Buttons and Inputs --*/
@@ -124,7 +129,7 @@ input[type=submit] {
     border: none;
     color: white;
     padding: 1em 2em;
-    margin: 0em auto;
+    margin-bottom: 1em;
     cursor: pointer;
     font-size: 16px;
     border-radius: 1em;
