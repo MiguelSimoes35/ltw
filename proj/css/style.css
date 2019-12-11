@@ -390,6 +390,27 @@ article.place div.place_info .owner {
     left: 0%;
 }
 
+/*----------------------*/
+/*--- Adding a Place ---*/
+/* ---------------------*/
+
+#places button#add-place{
+    background-color: #df622c;
+    border-color: #df622c;
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+
+    position: relative;
+    left: 45%;
+    
+    top: 265px;
+}
+
+#places button > a {
+    color: white;
+}
+
 
 
 

@@ -29,18 +29,52 @@
 
         <div id="data">
             <ul>
-                <li><b>My Reservations </b></li>
-                <li><b>My Places</b></li>
+                <li><b><a href="#" onclick="loadDoc1()">My Reservations</a> </b></li>
+                <li><b><a href="#" onclick="loadDoc2()">My Places</a></b></li>
                 <li><b>Favorite Places</b></li>
                 <li><b>Messages</b></li>
                 <li><b>Notifications</b></li>
             </ul>
-            <div>
+            <div id="profile-content">
+
+                <!-- Profile information will display here -->
 
             </div>  
         </div>
     </section>
 </section>
+
+<!-- Javascript -->
+<script type="text/javascript">
+
+    function loadDoc1() {
+    
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("profile-content").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("POST", "./my_reservations.php", true);
+        xhttp.send();
+    
+    }
+
+    function loadDoc2() {
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("profile-content").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("POST", "./my_places.php", true);
+    xhttp.send();
+
+}
+
+</script>
+
 <?php
     template_footer();
 ?>
