@@ -83,7 +83,7 @@
 
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM Place WHERE id = ?');
+        $stmt = $db->prepare('SELECT * FROM Place, Location WHERE Place.id = ? AND Place.location_id = Location.id');
         $stmt->execute(array($id));
 
         return $stmt->fetch();
