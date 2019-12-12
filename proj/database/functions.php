@@ -51,6 +51,15 @@
         return $stmt->fetch()['username'];
     }
 
+    function get_user_full_name($id){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT name FROM User WHERE username = ?');
+        $stmt->execute(array($id));
+
+        return $stmt->fetch()['name'];
+    }
+
     function update_password($username, $password) {
         $db = Database::instance()->db();
 
@@ -160,5 +169,39 @@
         return $name;
 
     }
+
+    function find_location_id($city, $country){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Location WHERE (city = ? AND country = ?)');
+        $stmt->execute(array($city, $country));
+
+        return $stmt->fetch()['id'];
+
+    }
+
+    function add_place($title, $description, $address, $price_day, $capacity, $location_id, $user){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('INSERT INTO Place(title, price_day, description, address, location_id, owner, capacity) VALUES(?, ?, ?, ?, ?, ?, ?)');
+        $stmt->execute(array($title, $price_day, $description, $address, $location_id, $user, $capacity));
+
+        return true;
+
+    }
+
+    function get_places($user){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Place WHERE owner = ?');
+        $stmt->execute(array($user));
+
+        return $stmt->fetchAll();
+
+    }
+
 
 ?>

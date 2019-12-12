@@ -1,6 +1,7 @@
 <?php
     include_once('../includes/session.php');
     include_once('../database/access_database.php');
+    include_once('../database/functions.php');
 
     function template_header() {
 ?>
@@ -41,7 +42,7 @@
 ?>
         <div id = "header_user_section">
             <a href="profile.php?user=<?=$_SESSION['username']?>"><img src=<?=$thumbnail?> alt="Profile Picture Icon" style="width:40px;height:40px;"></a>
-            <a href="profile.php?user=<?=$_SESSION['username']?>"><?= $_SESSION['username']?></a>
+            <a href="profile.php?user=<?=$_SESSION['username']?>"><?= get_user_full_name($_SESSION['username']) ?></a>
             <form action="../actions/process_logout.php"><input type="submit" id="logout" value="Logout"></form>
         </div>
 <?php
@@ -62,11 +63,30 @@
                 <label for="description" id="description">Description</label>
                 <input type="textarea" rows="4" cols="50" id="description" name="description" required>
 
-                <label for="city">City</label>
-                <input type="text" id="city" name="city" required>
+                <?php
+                // gets all countries
+                $countries = getAllCountries(); 
+                ?>
 
                 <label for="country">Country</label>
-                <input type="text" id="country" name="country" required>
+
+                <select name="country" id="country" value="">
+                <option value="undefined"></option>
+
+                <?php foreach ($countries as $country) {
+                    ?>
+                    <option value=<?=$country['country']?>><?=$country['country']?></option>
+                    <?php
+                } 
+                ?>
+                </select>
+                <br>
+
+                <label for="city">City</label>
+                <select name="city" id="city" value="">
+                    <option value="undefined"></option>
+                </select>
+                <br>
 
                 <label for="address">Address</label>
                 <input type="text" id="address" name="address" required>
