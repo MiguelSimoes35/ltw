@@ -17,7 +17,6 @@ $userData = getUserData($_SESSION['username']);
 
 if($oldpassword == password_verify($oldpassword, $userData['password'])) {
     if($newpassword != $oldpassword) {
-        echo "Here!";
         if($newpassword == $rpassword) {
             update_password($_SESSION['username'], $newpassword);
             // create success message
@@ -28,6 +27,10 @@ if($oldpassword == password_verify($oldpassword, $userData['password'])) {
             // create error message
             header('Location: ../pages/edit_profile.php');
         }
+    }
+    else {
+        //create error message
+        header('Location: ../pages/edit_profile.php');
     }
 }
 

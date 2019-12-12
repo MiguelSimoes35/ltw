@@ -58,55 +58,71 @@ body>footer p {
 
 
 /*----------------------*/
-
-
 /*--- Authentication ---*/
-
-
 /*----------------------*/
 
-body>.authentication {
+body>.authentication,
+body>.container>.authentication {
     border: 2px solid #046DD5;
     background-color: #b3cde0;
     margin: 30px auto;
     width: 30em;
 }
 
-.authentication header {
+.authentication header,
+.container > .authentication header {
     padding: 1em;
     text-align: center;
 }
 
-.authentication footer {
+.authentication footer,
+.container > .authentication footer {
     padding: 0em 1em 1em 1em;
     text-align: center;
-
 }
 
-.authentication>form {
+.authentication>form,
+.container > .authentication form {
     padding: 0em 1em;
 }
 
-.authentication h2 {
+.authentication h2
+.container > .authentication h2 {
     padding: 0.5em;
     margin: 0;
 }
 
-.authentication label {
+.authentication label
+.container > .authentication label {
     font-weight: 600;
     margin-left: 5%;
 }
 
-.authentication a {
+.authentication a
+.container > .authentication a {
     color: black;
     padding: 1em;
     text-align: center;
 }
 
 #edit_profile > form > #edit_username {
-    width: 100%;
     box-sizing: border-box;
 }
+
+.container {
+    display: grid ;
+}
+
+#edit_profile {
+    grid-row: 1/2;
+    grid-column: 1;
+}
+
+#change_password {
+    grid-row: 1/2;
+    grid-column: 2;
+}
+
 
 /*------------------------*/
 /*-- Buttons and Inputs --*/

@@ -57,45 +57,47 @@
     function template_edit_profile() {
         $userdata = getUserData($_SESSION['username']);
 ?>
-        <section id="edit_profile" class="authentication">
-            <header><h2>Edit Profile</h2></header>
-            <form action="../actions/process_edit_profile.php" method="post">
+        <section id="edit" class="container">
+            <section id="edit_profile" class="authentication">
+                <header><h2>Edit Profile</h2></header>
+                <form action="../actions/process_edit_profile.php" method="post">
 
-                <label for="username" id="edit_username"> Username: <?php echo $_SESSION['username'] ?> </label>
-                <br/>
-                <label for="name" id="full_name">Full name</label>
-                <input type="text" id="name" name="name" value="<?php echo $userdata['name'] ?>" required>
-                
-                <label for="email" id="e-mail">E-mail</label>
-                <input type="email" id="email" name="email" value="<?php echo $userdata['email'] ?>" required>
+                    <label for="username" id="edit_username"> Username: <?php echo $_SESSION['username'] ?> </label>
+                    <br/>
+                    <label for="name" id="full_name">Full name</label>
+                    <input type="text" id="name" name="name" value="<?php echo $userdata['name'] ?>" required>
+                    
+                    <label for="email" id="e-mail">E-mail</label>
+                    <input type="email" id="email" name="email" value="<?php echo $userdata['email'] ?>" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" minlength="8" required>
-                
-                <div id="photo">
-                    <label for="picture"> Update your profile picture </label>
-                    <img src="<?= get_user_photo($_SESSION['username']) ?>" alt="Profile Picture Icon"  style="width:250px;height:250px;">
-                    <input type="file" id="picture" name="profile_pic">    
-                </div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" minlength="8" required>
+                    
+                    <div id="photo">
+                        <label for="picture"> Update your profile picture </label>
+                        <img src="<?= get_user_photo($_SESSION['username']) ?>" alt="Profile Picture Icon"  style="width:250px;height:250px;">
+                        <input type="file" id="picture" name="profile_pic">    
+                    </div>
 
-                <input type="submit" value="Update">
-            </form>
-        </section>
-        <section id="change_password" class="authentication">
-        <header><h2>Change Password</h2></header>
-            <form action="../actions/process_edit_profile.php" method="post">
+                    <input type="submit" value="Update Profile">
+                </form>
+            </section>
+            <section id="change_password" class="authentication">
+            <header><h2>Change Password</h2></header>
+                <form action="../actions/process_edit_profile.php" method="post">
 
-                <label for="old_password">Old Password</label>
-                <input type="password" id="old_password" name="old_password" minlength="8" required>
-                
-                <label for="new_password">New Password</label>
-                <input type="password" id="new_password" name="new_password" minlength="8" required>
+                    <label for="old_password">Old Password</label>
+                    <input type="password" id="old_password" name="old_password" minlength="8" required>
+                    
+                    <label for="new_password">New Password</label>
+                    <input type="password" id="new_password" name="new_password" minlength="8" required>
 
-                <label for="conf_new_password">Confirm Password</label>
-                <input type="password" id="conf_new_password" name="conf_new_password" minlength="8" required>
+                    <label for="conf_new_password">Confirm Password</label>
+                    <input type="password" id="conf_new_password" name="conf_new_password" minlength="8" required>
 
-                <input type="submit" value="Change Password">
-            </form>
+                    <input type="submit" value="Change Password">
+                </form>
+            </section>
         </section>
 <?php
     }
