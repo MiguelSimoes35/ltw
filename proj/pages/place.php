@@ -44,7 +44,7 @@
                 <li><b>Title: </b><?=$place['title'] ?></li>
                 <li><b>Prices/Day: </b><?= $place['price_day'] ?></li>
                 <li><b>Description: </b><?= $place['description'] ?></li>
-                <li><b>Address: </b></li>
+                <li><b>Address: </b><?= $place['address'] ?></li>
                 <li><b>Capacity: </b><?= $place['capacity'] ?></li>
             </ul><!--
             <div>
