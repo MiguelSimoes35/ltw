@@ -6,6 +6,7 @@
     // username
     $user =  $_SESSION['username'];
 
+
     // gets array of reservations
     $places = get_places($user);
 
