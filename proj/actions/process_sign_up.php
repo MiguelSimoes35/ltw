@@ -2,6 +2,7 @@
     
     include_once('../database/functions.php');
     include_once('../includes/session.php');
+    include_once('../actions/process_upload_files.php');
 
     // variables
     $username = $_POST['username'];
@@ -23,7 +24,9 @@
     
 
     if(insert_user($username, $password, $name, $email)) {
+        mkdir("../resources/users/$username");
         $_SESSION['username'] = $username;
+        set_profile_photo();
         header('Location: ../pages/main.php'); 
     }
     else {

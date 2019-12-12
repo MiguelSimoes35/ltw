@@ -22,7 +22,7 @@
             </select>
             <div id="date">
                 <label for="checkin">Check-In</label>
-                <input type="date" name="checkin" id="checkin" required>
+                <input type="date" name="checkin" id="checkin" placeholder="Check-In" required>
                 <label for="checkout">Check-Out</label>
                 <input type="date" name="checkout" id="checkout" required> 
             </div>
