@@ -108,15 +108,33 @@
         return $countries->fetchAll();
     }
 
+    function insert_user_photo($username, $path){
+        $db = Database::instance()->db();
+        $stmt = $db->prepare("INSERT INTO Photo VALUES(NULL, ?, ?, NULL)");        
+        $stmt->execute(array($path, $username));
+    }
+
     function get_user_photo($username){
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
         $stmt->execute(array($username));
         $path = $stmt->fetch()['path'];
-        if(!$path) {
-            $path = "../resources/pic1.png";
+        if(!file_exists($path . '/profile.jpg')) {
+            return "../resources/default_users.jpg";
         }
-        return $path;
+        return $path . '/profile.jpg';
+    }
+
+    function get_user_thumbnail($username){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
+        $stmt->execute(array($username));
+        $path = $stmt->fetch()['path'];
+        if(!file_exists($path . '/thumbnail.jpg')) {
+            return "../resources/default_users_tb.jpg";
+        }
+        return $path . '/thumbnail.jpg';
     }
 ?>

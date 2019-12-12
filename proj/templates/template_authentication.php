@@ -23,7 +23,7 @@
 ?>
     <section id="sign_up" class="authentication">
         <header><h2>Sign up</h2></header>
-        <form action="../actions/process_sign_up.php" method="post">
+        <form action="../actions/process_sign_up.php" method="post" enctype="multipart/form-data">
 
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
@@ -42,8 +42,8 @@
             
             <div id="photo">
                 <label for="picture"> Upload a profile picture: </label>
-                <img src="../resources/pic1.png" alt="Profile Picture Icon"  style="width:250px;height:250px;">
-                <input type="file" id="picture" name="profile_pic">    
+                <br><img src="../resources/pic1.png" alt="Profile Picture Icon"  style="width:150px;height:150px;">
+                <input type="file" id="picture" name="profile_photo">    
             </div>
 
             <input type="submit" value="Sign up">
@@ -59,7 +59,7 @@
 ?>
         <section id="edit_profile" class="authentication">
             <header><h2>Edit Profile</h2></header>
-            <form action="../actions/process_edit_profile.php" method="post">
+            <form action="../actions/process_edit_profile.php" method="post" enctype="multipart/form-data">
 
                 <label for="username" id="edit_username"> Username: <?php echo $_SESSION['username'] ?> </label>
                 <br/>
@@ -75,7 +75,7 @@
                 <div id="photo">
                     <label for="picture"> Update your profile picture </label>
                     <img src="<?= get_user_photo($_SESSION['username']) ?>" alt="Profile Picture Icon"  style="width:250px;height:250px;">
-                    <input type="file" id="picture" name="profile_pic">    
+                    <input type="file" id="picture" name="profile_photo">
                 </div>
 
                 <input type="submit" value="Update">

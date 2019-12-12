@@ -3,6 +3,8 @@
 include_once('../database/functions.php');
 include_once('../includes/session.php');
 include_once('../database/access_database.php');
+include_once('../actions/process_upload_files.php');
+
 
 // variables
 $name = $_POST['name'];
@@ -39,6 +41,7 @@ if($password == password_verify($password, $userData['password'])){
         update_email($_SESSION['username'], $name);
     }
     // if for the pic -> when update photo available
+    update_profile_photo();
     // create success message
     header('Location: ../pages/profile.php?user=' . $_SESSION['username']);
 }
