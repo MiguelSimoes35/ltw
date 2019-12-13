@@ -101,9 +101,8 @@
 
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM Reservation WHERE (id = ? AND checkin <= ? AND checkout >= ?)');
+        $stmt = $db->prepare('SELECT * FROM Reservation WHERE (place_id = ? AND checkin <= ? AND checkout >= ?)');
         $stmt->execute(array($place_id, $checkout, $checkin));
-
         $number = count($stmt->fetch()['id']);
 
         if($number == 0){
