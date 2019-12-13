@@ -19,7 +19,6 @@ a {
 
 body>header {
     background-color: #046DD5;
-    /*pointer-events: none;*/
     text-decoration: none;
     color: white;
     font-style: normal;
@@ -58,55 +57,71 @@ body>footer p {
 
 
 /*----------------------*/
-
-
 /*--- Authentication ---*/
-
-
 /*----------------------*/
 
-body>.authentication {
+body>.authentication,
+body>.container>.authentication {
     border: 2px solid #046DD5;
     background-color: #b3cde0;
     margin: 30px auto;
     width: 30em;
 }
 
-.authentication header {
+.authentication header,
+.container > .authentication header {
     padding: 1em;
     text-align: center;
 }
 
-.authentication footer {
+.authentication footer,
+.container > .authentication footer {
     padding: 0em 1em 1em 1em;
     text-align: center;
-
 }
 
-.authentication>form {
+.authentication>form,
+.container > .authentication form {
     padding: 0em 1em;
 }
 
-.authentication h2 {
+.authentication h2
+.container > .authentication h2 {
     padding: 0.5em;
     margin: 0;
 }
 
-.authentication label {
+.authentication label
+.container > .authentication label {
     font-weight: 600;
     margin-left: 5%;
 }
 
-.authentication a {
+.authentication a
+.container > .authentication a {
     color: black;
     padding: 1em;
     text-align: center;
 }
 
 #edit_profile > form > #edit_username {
-    width: 100%;
     box-sizing: border-box;
 }
+
+.container {
+    display: grid ;
+}
+
+#edit_profile {
+    grid-row: 1/2;
+    grid-column: 1;
+}
+
+#change_password {
+    grid-row: 1/2;
+    grid-column: 2;
+}
+
 
 /*------------------------*/
 /*-- Buttons and Inputs --*/
@@ -391,6 +406,55 @@ article.place_small:hover {
     color: white;
 }
 
+#profile-content {
+    background-color: white;
+    height: 63%;
+    border-radius: 1em;
+    padding: 2em;
+    margin: 1em;
+    position: relative;
+}
+
+#table_header {
+    font-weight: 600;
+    display: flex;
+    height: 30px;
+    align-items: center;
+    padding: 0px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    justify-content: space-between;
+}
+
+#reservations,
+#my_places {
+    display: flex;
+    height: 25px;
+    align-items: center;
+    padding: 0px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    justify-content: space-between;
+}
+
+#table_header > div,
+#reservations > div,
+#my_place > div {
+    width: 150px; 
+    text-align: center;
+}
+
+#add_place {
+    background-color: #df622c;
+    border-color: #df622c;
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    position: absolute;
+    right: 430px;
+    bottom: 10px;
+    cursor: pointer;
+    color: white;
+}
+
 /*-------------------*/
 /*--- Reservation ---*/
 /* ------------------*/
@@ -420,26 +484,6 @@ article.place_small:hover {
 /*----------------------*/
 /*--- Adding a Place ---*/
 /* ---------------------*/
-
-#places button#add-place{
-    background-color: #df622c;
-    border-color: #df622c;
-    border-radius: 1em;
-    padding: 1em;
-    margin-bottom: 1em;
-
-    position: relative;
-    left: 45%;
-    
-    top: 265px;
-}
-
-#places button > a {
-    color: white;
-}
-
-
-
 
 /*#profile > a > p {
     left: 86%;

@@ -36,7 +36,6 @@
                 <li><b>Notifications</b></li>
             </ul>
             <div id="profile-content">
-
                 <!-- Profile information will display here -->
             </div>  
         </div>
@@ -70,7 +69,7 @@
     xhttp.open("POST", "./my_places.php", true);
     xhttp.send();
 
-}
+    }
 
 </script>
 
