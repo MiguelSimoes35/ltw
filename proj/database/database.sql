@@ -4,7 +4,7 @@
 -- Text encoding used: System
 --
 PRAGMA foreign_keys = off;
---BEGIN TRANSACTION;
+BEGIN TRANSACTION;
 
 -- Table: User
 DROP TABLE IF EXISTS User;
@@ -120,5 +120,5 @@ CREATE TABLE Review (
     reservation INTEGER REFERENCES Reservation (id) 
 );
 
---COMMIT TRANSACTION;
+COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;

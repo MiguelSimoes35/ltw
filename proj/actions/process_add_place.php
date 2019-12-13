@@ -17,8 +17,5 @@ $user = $_SESSION['username'];
 add_place($title, $description, $address, $price_day, $capacity, $location_id, $user);
 
 header('Location: ../pages/main.php');
-    
-    
-
 
 ?>

@@ -19,7 +19,6 @@ a {
 
 body>header {
     background-color: #046DD5;
-    /*pointer-events: none;*/
     text-decoration: none;
     color: white;
     font-style: normal;
@@ -390,6 +389,55 @@ article.place div.place_info .owner {
     color: white;
 }
 
+#profile-content {
+    background-color: white;
+    height: 63%;
+    border-radius: 1em;
+    padding: 2em;
+    margin: 1em;
+    position: relative;
+}
+
+#table_header {
+    font-weight: 600;
+    display: flex;
+    height: 30px;
+    align-items: center;
+    padding: 0px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    justify-content: space-between;
+}
+
+#reservations,
+#my_places {
+    display: flex;
+    height: 25px;
+    align-items: center;
+    padding: 0px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    justify-content: space-between;
+}
+
+#table_header > div,
+#reservations > div,
+#my_place > div {
+    width: 150px; 
+    text-align: center;
+}
+
+#add_place {
+    background-color: #df622c;
+    border-color: #df622c;
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+    position: absolute;
+    right: 430px;
+    bottom: 10px;
+    cursor: pointer;
+    color: white;
+}
+
 /*-------------------*/
 /*--- Reservation ---*/
 /* ------------------*/
@@ -419,96 +467,6 @@ article.place div.place_info .owner {
 /*----------------------*/
 /*--- Adding a Place ---*/
 /* ---------------------*/
-
-#places button#add-place{
-    background-color: #df622c;
-    border-color: #df622c;
-    border-radius: 1em;
-    padding: 1em;
-    margin-bottom: 1em;
-
-    position: relative;
-    left: 45%;
-    
-    top: 265px;
-}
-
-#places button > a {
-    color: white;
-}
-
-/*--------------------------*/
-/*--- Reservations table ---*/
-/* -------------------------*/
-
-
-table {
-    border-spacing: 3;
-    width: 100%;
-  }
-
-  th {
-    background-color: #df622c;
-    color: white;
-    border-top: none;
-  }
-
-  th:first-child {
-    border-radius: 0.6em 0 0 0;
-    }
-
-    th:last-child {
-        border-radius: 0 0.6em 0 0 ;
-    }
-
-    /* the first 'th' within the first 'tr' of the 'thead': */
-    thead tr:first-child th:first-child {
-        border-radius: 0.6em 0 0 0;
-    }
-    /* the last 'th' within the first 'tr' of the 'thead': */
-    thead tr:first-child th:last-child {
-        border-radius: 0 0.6em 0 0;
-    }
-    /* the first 'td' within the last 'tr' of the 'tbody': */
-    tbody tr:last-child td:first-child {
-        border-radius: 0 0 0 0.6em;
-    }
-    /* the last 'td' within the last 'tr' of the 'tbody': */
-    tbody tr:last-child td:last-child {
-        border-radius: 0 0 0.6em 0;
-    }
-  
-  th, td {
-    text-align: left;
-    padding: 8px;
-    border-left:solid black 1px;
-    border-top:solid black 1px;
-    border-right:solid black 1px;
-    border-bottom:solid black 1px;
-  }
-  /*
-  tr:nth-child(){
-    background-color: #f2f2f2;
-    border-left: none;
-}
-  
-  th {
-    background-color: #df622c;
-    color: white;
-    border-top: none;
-  }
-
-    table {
-        border-spacing: 0;
-    }
-    th, td {
-        border: 1px solid #000;
-        padding: 0.5em 1em;
-    }
-    */
-
-    
-
 
 /*#profile > a > p {
     left: 86%;

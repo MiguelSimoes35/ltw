@@ -89,14 +89,12 @@
     }
 
     function get_place_data($id){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Place, Location WHERE Place.id = ? AND Place.location_id = Location.id');
         $stmt->execute(array($id));
 
         return $stmt->fetch();
-
     }
 
     function valid_dates($checkin, $checkout, $place_id){
@@ -147,27 +145,22 @@
     }
 
     function get_reservations($user){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Reservation WHERE tourist = ?');
         $stmt->execute(array($user));
 
         return $stmt->fetchAll();
-
     }
 
     function get_place_name($place_id){
-        
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Place WHERE id = ?');
         $stmt->execute(array($place_id));
-
         $name = $stmt->fetch()['title'];
 
         return $name;
-
     }
 
     function find_location_id($city, $country){
@@ -193,14 +186,11 @@
     }
 
     function get_places($user){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Place WHERE owner = ?');
         $stmt->execute(array($user));
 
         return $stmt->fetchAll();
-
     }
-
 ?>

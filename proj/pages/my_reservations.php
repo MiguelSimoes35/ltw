@@ -1,40 +1,31 @@
 <?php 
-
     include_once('../includes/session.php');
     include_once('../database/functions.php');
 
     // username
-    $user =  $_SESSION['username'];
+    $user = $_SESSION['username'];
 
     // gets array of reservations
     $reservations = get_reservations($user);
 
 ?>
-
-<link href="../css/style.css" rel="stylesheet">
-
-<h2>Reservations</h2>
-
-<table>
-    <tr>
-        <th>Place</th>
-        <th>Check-In</th>
-        <th>Check-Out</th>
-        <th>Total Price</th>
-    </tr>
-    
-    <?php 
-
-        for($i = 0; $i < count($reservations); $i++){ 
-            
-            $id = $reservations[$i]['place_id']; ?>
-            <tr>
-                <td><?php echo get_place_name($id);  ?></th>
-                <td><?php echo $reservations[$i]['checkin'];  ?></th>
-                <td><?php echo $reservations[$i]['checkout'];  ?></th>
-                <td><?php echo $reservations[$i]['total_price'];  ?></th>
-            </tr>
-        <?php } ?>
-    
-</table>
-
+<div id="table_header">
+    <div>Place</div> 
+    <div>Check-In Date</div> 
+    <div>Check-Out Date</div> 
+    <div>Price(€)</div>
+</div>
+<?php
+    for($i = 0; $i < count($reservations); $i++){
+        $id = $reservations[$i]['place_id'];
+        ?>
+        <div id="reservations">
+            <div><?= get_place_name($id); ?></div>
+            <div><?= $reservations[$i]['checkin']; ?></div> 
+            <div><?= $reservations[$i]['checkout']; ?></div> 
+            <div><?= $reservations[$i]['total_price']; ?></div>
+        </div>
+        <?php
+    }
+    ?>
+</div>
