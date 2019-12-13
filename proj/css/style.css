@@ -152,10 +152,10 @@ article p {
     margin-left: 30px;
 }
 
-article>img {
+article>img, div>img {
     float: center;
-    width: 30%;
-    padding: 0% 0% 2% 2%;
+    width: 100%;
+    /*padding: 0% 0% 2% 2%;*/
 }
 
 
@@ -297,6 +297,23 @@ article.place div.place_info .owner {
 #place_photo:hover img {
     filter: blur(1px);
 }
+
+article.place_small {
+    max-width: 350px; 
+    position: relative; 
+    background-color: white; 
+    margin: 1em;
+    padding: 0.2em; 
+    border-radius: 0.2em;
+    transition: padding 0.5s, background-color 0.5s;
+}
+
+article.place_small:hover {
+    background-color: #dddddd; 
+    padding: 0.4em;
+}
+
+
 
 
 /*---------------*/

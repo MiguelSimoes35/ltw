@@ -38,7 +38,6 @@
             <div id="profile-content">
 
                 <!-- Profile information will display here -->
-
             </div>  
         </div>
     </section>

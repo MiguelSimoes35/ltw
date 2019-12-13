@@ -31,7 +31,7 @@
     
     //template_place($places[0]);
     foreach ($places as $place) {
-        template_place($place);
+        template_place_small($place);
     }
 ?>
     <!--<section id="popular_places">
