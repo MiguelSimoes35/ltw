@@ -17,23 +17,26 @@ $place_id = $_GET['id'];
 
     <section id="place_section">
         <h1><?= $place['title'] ?></h1>
-        <h3 class="owner">Posted by <?= $place['owner'] ?></h3>
         <div class="place">
             <div id="place_photo">
                 <img src="../resources/beachOpener.jpg" alt="Place photo" style="max-width:600px; max-height:400px;">
             </div>
             <div class="place_info">
                 <?php template_favorite($place_id)?>
+                <h2 class="location"><?= $place['city'] ?>, <?= $place['country'] ?></h2>
+                <h2 class="capacity">Capacity: <?= $place['capacity'] ?> <i class="material-icons">person</i> </h2>
                 <h2 class="price">Price per day: <?= $place['price_day'] ?> €</h2>
-                <h3 class="capacity">Capacity: <?= $place['capacity'] ?> <i class="material-icons">person</i> </h3>
-                <h3 class="location"><?= $place['city'] ?>, <?= $place['country'] ?></h3>
                 <h2>RATED 4.5<i class="material-icons">star</i></h2>
+                <h3 class="owner">Posted by <?= $place['owner'] ?></h3>
+
             </div>
         </div>
-        <h3><b>Description: </b></h3>
-        <p>
-            <?= $place['description'] ?>
-        </p>
+        <div id="description">
+            <h2><b>Description</b></h2>
+            <p>
+                <?= $place['description'] ?>
+            </p>
+        </div>
         <!--<div id="place_reservation">
             
             <div id="place_photo">
@@ -60,7 +63,7 @@ $place_id = $_GET['id'];
         <form action="../actions/process_reservation.php?id=<?= $place_id ?>" method="post">
             <!--<div id="reservation_info">-->
             <!-- calendar here -->
-            Please insert the date of check-in and check-out.
+            
             <br>
             <label for="checkin">Check-In</label>
             <input type="date" name="checkin" id="checkin" required>

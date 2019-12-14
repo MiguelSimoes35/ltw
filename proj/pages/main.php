@@ -28,10 +28,7 @@
 <section id="content">
 <?php
     template_search();
-
-    //print_r($places);
-    
-    //template_place($places[0]);
+        
     foreach ($places as $place) {
         template_place($place);
     }

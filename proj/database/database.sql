@@ -120,5 +120,14 @@ CREATE TABLE Review (
     reservation INTEGER REFERENCES Reservation (id) 
 );
 
+DROP TABLE IF EXISTS [Like];
+
+CREATE TABLE [Like] (
+    like_id  INTEGER PRIMARY KEY,
+    username TEXT    REFERENCES User (username) ON DELETE CASCADE,
+    place_id INTEGER REFERENCES Place (id) ON DELETE CASCADE
+);
+
+
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;

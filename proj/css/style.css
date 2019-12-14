@@ -17,6 +17,10 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    font-size: 32px;
+}
+
 body>header {
     background-color: #046DD5;
     text-decoration: none;
@@ -132,10 +136,17 @@ input {
     padding: 1em;
     border: none;
     border-bottom: 2px solid #046DD5;
+    border-radius: 0.5em;
     box-sizing: border-box;
     display: block;
     margin: 1em auto;
     margin-top: 0.5em;
+}
+
+select {
+    border-radius: 0.5em;
+    margin: 0.5em;
+    min-width: 7em;
 }
 
 input[type=submit] {
@@ -243,6 +254,47 @@ article>img, div>img {
 /*---- Place ----*/
 /*---------------*/
 
+#place_section div.place {
+    max-width: 75em;
+    margin: 1em auto;
+}
+
+#place_section  div.place_info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-top: 1em;
+    margin-left: 4em;
+    background-color: white;
+    border-radius: 1em;
+}
+
+#place_section  div.place_info h2, #place_section h2 {
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 0.2em;
+    margin-left: 1.5em;
+}
+
+#place_section  div.place_info h3 {
+    align-self: flex-end;
+    margin-right: 2em;
+}
+
+#place_section div#description {
+    background-color: white;
+    border-radius: 1em;
+    max-width: 75em;
+    margin: 1em auto;
+}
+
+#place_section div#description p {
+    margin: 1em;
+    margin-top: 0;
+    padding: 1em;
+}
+
 article.place {
     background-color: white;
     position: relative;
@@ -339,6 +391,11 @@ div.favorite {
     opacity: 0.6; 
 }
 
+#place_section div.favorite {
+    top: 30px;
+    right: 40px;
+}
+
 article.place div.favorite {
     top: 30px;
     right: 40px;
@@ -358,10 +415,18 @@ div.favorite i {
     transition: 0.5s color, 0.2s font-size;
 }
 
+#place_section div.favorite i {
+    font-size: 35px;
+}
+
 div.favorite i:hover{
     font-size: 30px;
     color: #ff5555;
     cursor: pointer;
+}
+
+#place_section div.favorite i:hover {
+    font-size: 40px;
 }
 
 
@@ -493,6 +558,7 @@ div.favorite i:hover{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 2em;
+    justify-items: center;
   }
 
 /*-------------------*/

@@ -8,7 +8,7 @@
 
     // gets array of reservations
     $favorite_places = getFavoritePlaces($user);
-
+    print_r($favorite_places);
 ?>
 <div id="favorite_places">
     <?php 
