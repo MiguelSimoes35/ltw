@@ -5,6 +5,7 @@
     include_once('../templates/template_place.php');
     include_once('../database/access_database.php');
     include_once('../includes/session.php');
+    include_once('../templates/template_favorite.php');
     
     if(!isset($_SESSION['username'])){
         die(header('Location: login.php'));
@@ -13,6 +14,7 @@
     $places = getAllPlaces();
 
     template_header();
+
  
 ?>
     
@@ -31,7 +33,7 @@
     
     //template_place($places[0]);
     foreach ($places as $place) {
-        template_place_small($place);
+        template_place($place);
     }
 ?>
     <!--<section id="popular_places">

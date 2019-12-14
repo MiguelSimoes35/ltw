@@ -31,7 +31,7 @@
             <ul>
                 <li><b><a href="#" onclick="loadDoc1()">My Reservations</a> </b></li>
                 <li><b><a href="#" onclick="loadDoc2()">My Places</a></b></li>
-                <li><b>Favorite Places</b></li>
+                <li><b><a href="#" onclick="loadDoc3()">Favorite Places</a></b></li>
                 <li><b>Messages</b></li>
                 <li><b>Notifications</b></li>
             </ul>
@@ -67,6 +67,19 @@
         }
     };
     xhttp.open("POST", "./my_places.php", true);
+    xhttp.send();
+
+    }
+
+    function loadDoc3() {
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("profile-content").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("POST", "../templates/template_favorite_places.php", true);
     xhttp.send();
 
     }

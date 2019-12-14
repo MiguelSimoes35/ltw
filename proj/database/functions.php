@@ -101,9 +101,9 @@
 
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('SELECT * FROM Reservation WHERE (id = ? AND checkin <= ? AND checkout >= ?)');
+        $stmt = $db->prepare('SELECT * FROM Reservation WHERE (place_id = ? AND checkin <= ? AND checkout >= ?)');
         $stmt->execute(array($place_id, $checkout, $checkin));
-
+                
         $number = count($stmt->fetch()['id']);
 
         if($number == 0){
@@ -112,6 +112,7 @@
         else{
             return false;
         }
+        return true;
     }
 
     function make_reservation($checkin, $checkout, $place_id, $user, $total_price){
@@ -183,6 +184,20 @@
 
         return true;
 
+    }
+
+    function add_like($username, $place_id) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('INSERT INTO Like(id, username, place_id) VALUES(NULL, ?, ?)');
+        $stmt->execute(array($username, $place_id));
+    }
+
+    function remove_like($username, $place_id) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('DELETE FROM Like WHERE username = ? AND place_id = ?');
+        $stmt->execute(array($username, $place_id));
     }
 
     function get_places($user){

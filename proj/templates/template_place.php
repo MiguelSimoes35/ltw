@@ -1,8 +1,11 @@
 <?php
+    include_once('../templates/template_favorite.php');
+
     function template_place($place){
     $location = getLocation($place['location_id']);
 ?>  
         <article class="place">
+        <?php template_favorite($place['id']);?>
             <a href="../pages/place.php?id=<?=$place['id']?>">
                 <div class="place">
                     <div class="place_photo">
@@ -36,7 +39,8 @@
         </div>
         </div>
     </a>
-    </article>
+<?php template_favorite($place['id']);?>
+   </article>
 <?php
     }
 ?>
