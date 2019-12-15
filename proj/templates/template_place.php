@@ -1,8 +1,9 @@
 <?php
     include_once('../templates/template_favorite.php');
+    include_once('../database/functions.php');
 
     function template_place($place){
-    $location = getLocation($place['location_id']);
+        $location = getLocation($place['location_id']);
 ?>  
         <article class="place">
         <?php template_favorite($place['id']);?>
@@ -41,6 +42,40 @@
     </a>
 <?php template_favorite($place['id']);?>
    </article>
+<?php
+    }
+
+    function template_edit_place() {
+        $ind = $_GET['code'];
+        $place = get_places($_SESSION['username'])[$ind];
+?>
+        <section id="edit_place" class="authentication">
+            <header><h2>Edit Place</h2></header>
+            <form action="../actions/process_edit_place.php?code=<?=$ind?>" method="post">
+                <label for="title" id="title">Title</label>
+                <input type="text" id="title" name="title" value="<?php echo $place['title'] ?>" required>
+
+                <label for="description" id="description">Description</label>
+                <input type="textarea" rows="4" cols="50" id="description" name="description" value="<?php echo $place['description'] ?>" required>
+                    
+                <label for="price_day" id="price_day">Price p/ Day (in €)</label>
+                <input type="number" id="price_day" name="price_day" value="<?php echo $place['price_day'] ?>" required>
+    
+                <label for="capacity">Capacity</label>
+                <input type="number" id="capacity" name="capacity" value="<?php echo $place['capacity'] ?>" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" minlength="8" required>
+                    
+                <div id="photo">
+                    <label for="picture"> Change the picture of your Place </label>
+                    <img src="../resources/summerSeason.jpg" alt="Defualt Place image"  style="width:450px;height:250px;">
+                    <input type="file" id="place-picture" name="place_pic">    
+                </div>
+
+                <input type="submit" value="Update Profile">
+            </form>
+        </section>
 <?php
     }
 ?>

@@ -207,4 +207,40 @@
 
         return $stmt->fetchAll();
     }
+
+    function update_place_title($id, $title) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Place SET title = ? WHERE id = ?');
+        $stmt->execute(array($title, $id));
+
+        return true;
+    }
+
+    function update_place_description($id, $description) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Place SET description = ? WHERE id = ?');
+        $stmt->execute(array($description, $id));
+
+        return true;
+    }
+
+    function update_place_price($id, $price) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Place SET price_day = ? WHERE id = ?');
+        $stmt->execute(array($price, $id));
+
+        return true;
+    }
+
+    function update_place_capacity($id, $capacity) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Place SET capacity = ? WHERE id = ?');
+        $stmt->execute(array($capacity, $id));
+
+        return true;
+    }
 ?>
