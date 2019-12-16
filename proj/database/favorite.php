@@ -13,11 +13,11 @@
     
     if($stmt->fetch() == false){
         add_like($username, $place);
-        $like = array($place, 'red');
+        $like = array("place" => $place, "color" => "red");
     }
     else {
         remove_like($username, $place);
-        $like = array($place, "#bbbbbb");
+        $like = array("place" => $place, "color" => "#bbbbbb");
     }
     
     echo json_encode($like);

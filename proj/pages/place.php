@@ -22,7 +22,7 @@ $place_id = $_GET['id'];
                 <img src="../resources/beachOpener.jpg" alt="Place photo" style="max-width:600px; max-height:400px;">
             </div>
             <div class="place_info">
-                <?php template_favorite($place_id)?>
+                <?php template_favorite($place_id) ?>
                 <h2 class="location"><?= $place['city'] ?>, <?= $place['country'] ?></h2>
                 <h2 class="capacity">Capacity: <?= $place['capacity'] ?> <i class="material-icons">person</i> </h2>
                 <h2 class="price">Price per day: <?= $place['price_day'] ?> €</h2>
@@ -37,6 +37,23 @@ $place_id = $_GET['id'];
                 <?= $place['description'] ?>
             </p>
         </div>
+        <section id="reservation">
+            <form action="../actions/process_reservation.php?id=<?= $place_id ?>" method="post">
+                <!--<div id="reservation_info">-->
+                <!-- calendar here -->
+
+                <br>
+                <label for="checkin">Check-In</label>
+                <input type="date" name="checkin" id="checkin" required>
+                <label for="checkout">Check-Out</label>
+                <input type="date" name="checkout" id="checkout" required>
+
+                <!--</div>
+                <!-<button id="make_reservation">Make a reservation!</button>-->
+                <input type="submit" value="Make Reservation">
+
+            </form>
+        </section>
         <!--<div id="place_reservation">
             
             <div id="place_photo">
@@ -59,23 +76,7 @@ $place_id = $_GET['id'];
         </div>-->
     </section>
 
-    <section id="reservation">
-        <form action="../actions/process_reservation.php?id=<?= $place_id ?>" method="post">
-            <!--<div id="reservation_info">-->
-            <!-- calendar here -->
-            
-            <br>
-            <label for="checkin">Check-In</label>
-            <input type="date" name="checkin" id="checkin" required>
-            <label for="checkout">Check-Out</label>
-            <input type="date" name="checkout" id="checkout" required>
 
-            <!--</div>
-                <!-<button id="make_reservation">Make a reservation!</button>-->
-            <input type="submit" value="Make Reservation">
-
-        </form>
-    </section>
 
     <section id="reviews">
 

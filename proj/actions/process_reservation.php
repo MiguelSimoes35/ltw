@@ -18,6 +18,7 @@
             $total_price = calculate_total_price($checkin, $checkout, $place_id);
             make_reservation($checkin, $checkout, $place_id, $user, $total_price);
 
+            // New Notification -> New Reservation
             header('Location: ../pages/main.php');
         }
         else{

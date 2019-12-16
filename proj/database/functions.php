@@ -188,7 +188,7 @@
     function add_like($username, $place_id) {
         $db = Database::instance()->db();
 
-        $stmt = $db->prepare('INSERT INTO Like(id, username, place_id) VALUES(NULL, ?, ?)');
+        $stmt = $db->prepare('INSERT INTO Like(like_id, username, place_id) VALUES(NULL, ?, ?)');
         $stmt->execute(array($username, $place_id));
     }
 
@@ -197,6 +197,32 @@
 
         $stmt = $db->prepare('DELETE FROM Like WHERE username = ? AND place_id = ?');
         $stmt->execute(array($username, $place_id));
+    }
+
+    function add_notification($type, $username, $helper) {
+        $db = Database::instance()->db();
+        $date = date("Y-m-d");
+
+        switch ($type) {
+            case 'New_Reservation':
+                $stmt = $db->prepare('INSERT INTO Notification (id, type, description, seen, date, username, helper) VALUES(NULL, "New Reservation", "Description", "no", ?, ?, ?)');
+                $stmt->execute(array($date, $username, $helper));
+                break;
+            case 'New_Review':
+                $stmt = $db->prepare('INSERT INTO Notification (id, type, description, seen, date, username, helper) VALUES(NULL, "New Review", "Description", "no", ?, ?, ?)');
+                $stmt->execute(array($date, $username, $helper));
+                break;
+            case 'New_Reply':
+                $stmt = $db->prepare('INSERT INTO Notification (id, type, description, seen, date, username, helper) VALUES(NULL, "New Reply", "Description", "no", ?, ?, ?)');
+                $stmt->execute(array($date, $username, $helper));
+                break;
+            case 'New_Place_Added':
+                $stmt = $db->prepare('INSERT INTO Notification (id, type, description, seen, date, username, helper) VALUES(NULL, "New Place Added", "Description", "no", ?, ?, ?)');
+                $stmt->execute(array($date, $username, $helper));
+                break;
+            default:
+                break;
+        }
     }
 
     function get_places($user){

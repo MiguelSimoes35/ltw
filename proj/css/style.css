@@ -587,6 +587,44 @@ div.favorite i:hover{
     left: 0%;*/
 }
 
+/*----------------------*/
+/*---- Notification ----*/
+/* ---------------------*/
+
+article.notification {
+    margin: 1em;
+}
+article.notification div {
+    position: relative;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    color: white;
+}
+
+article.notification div.unseen {
+    background-color: black;
+}
+
+article.notification div.seen {
+    background-color: grey;
+}
+
+article.notification div i {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+article.notification h3, article.notification h4 {
+    margin: 0;
+    padding: 0;
+}
+
+p.info_message {
+    text-align: center;
+}
+
 
 /*----------------------*/
 /*--- Adding a Place ---*/

@@ -1,4 +1,4 @@
-//alert('Running');
+
 
 let country = document.getElementById('country');
 if (country != null)
@@ -62,7 +62,6 @@ request.send();
 
 function colorFavorites() {
     let response = JSON.parse(this.responseText);
-    console.log(response);
 
     for (let i = 0; i < response.length; i++) {
         let favorite = document.getElementById("favorite_place_id=" + response[i].place_id);
@@ -70,7 +69,6 @@ function colorFavorites() {
             favorite.style.color = 'red';
     }
 }
-
 
 let elements = document.getElementsByClassName('favorite');
 
@@ -91,7 +89,27 @@ function favoritePressed(event) {
 }
 
 function colorFavoriteButton() {
+    console.log(this.responseText);
     let response = JSON.parse(this.responseText);
-    let favorite = document.getElementById("favorite_place_id=" + response[0]);
-    favorite.style.color = response[1];
+    let favorite = document.getElementById("favorite_place_id=" + response["place"]);
+    favorite.style.color = response["color"];
 }
+
+function deleteNotificationPressed(event) {
+    let id = event.target.id;
+    let request = new XMLHttpRequest();
+    request.addEventListener("load", removeNotification);
+    request.open("get", "../database/deleteNotification.php?id=" + id, true);
+    request.send();
+}
+
+function removeNotification() {
+    console.log(this.responseText);
+    let response = JSON.parse(this.responseText);
+    let notifications = document.getElementById("notifications"); 
+    let notification = document.getElementById(response["id"]);
+    notifications.removeChild(notification);
+    
+    /* Check if more notifications exist -> if not insert "You have no notifications"*/ 
+}
+

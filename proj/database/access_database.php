@@ -74,6 +74,14 @@ function getFavoritePlaces($username)
     return $stmt->fetchAll();
 }
 
+function getNotifications($username) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM Notification WHERE user = ? ORDER BY Notification.date DESC');
+    $stmt->execute(array($username));
+    return $stmt->fetchAll();
+}
+
 function getUserPlacesCount($user_id)
 {
     $db = Database::instance()->db();
