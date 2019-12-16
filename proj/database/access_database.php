@@ -155,6 +155,15 @@ function get_user_photo($username)
     return $path . '/profile.jpg';
 }
 
+function insert_place_photo($place_id, $path){
+
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("INSERT INTO Photo VALUES(NULL, ?, NULL, ?)");        
+    $stmt->execute(array($path, $place_id));
+
+}
+
 function get_user_thumbnail($username)
 {
     $db = Database::instance()->db();

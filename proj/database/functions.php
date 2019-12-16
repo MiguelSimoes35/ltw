@@ -11,9 +11,8 @@
     }
 
     function insert_user($username, $password, $name, $email){
-        echo "deu MERDA";
+
         $db = Database::instance()->db();
-        echo "123";
 
         $hash_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare('INSERT INTO User(username, password, name, email) VALUES(?, ?, ?, ?)');
@@ -181,7 +180,9 @@
         $stmt = $db->prepare('INSERT INTO Place(title, price_day, description, address, location_id, owner, capacity) VALUES(?, ?, ?, ?, ?, ?, ?)');
         $stmt->execute(array($title, $price_day, $description, $address, $location_id, $user, $capacity));
 
-        return true;
+
+
+        return $db->lastInsertId();
 
     }
 
@@ -232,5 +233,41 @@
         $stmt->execute(array($user));
 
         return $stmt->fetchAll();
+    }
+
+    function update_place_title($id, $title) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Place SET title = ? WHERE id = ?');
+        $stmt->execute(array($title, $id));
+
+        return true;
+    }
+
+    function update_place_description($id, $description) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Place SET description = ? WHERE id = ?');
+        $stmt->execute(array($description, $id));
+
+        return true;
+    }
+
+    function update_place_price($id, $price) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Place SET price_day = ? WHERE id = ?');
+        $stmt->execute(array($price, $id));
+
+        return true;
+    }
+
+    function update_place_capacity($id, $capacity) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Place SET capacity = ? WHERE id = ?');
+        $stmt->execute(array($capacity, $id));
+
+        return true;
     }
 ?>

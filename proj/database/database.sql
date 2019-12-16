@@ -4,7 +4,7 @@
 -- Text encoding used: System
 --
 PRAGMA foreign_keys = off;
-BEGIN TRANSACTION;
+--BEGIN TRANSACTION;
 
 -- Table: User
 DROP TABLE IF EXISTS User;

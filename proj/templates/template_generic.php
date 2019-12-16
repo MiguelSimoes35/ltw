@@ -51,7 +51,7 @@
         ?>
             <section id="add-a-place" class="authentication">
                 <header><h2>Add a Place</h2></header>
-                <form action="../actions/process_add_place.php" method="post">     
+                <form action="../actions/process_add_place.php" method="post" enctype="multipart/form-data">     
                     <label for="title" id="title">Title</label>
                     <input type="text" id="title" name="title" required>
                     
@@ -94,7 +94,7 @@
                     <div id="photo">
                         <label for="picture"> Upload a picture of your Place </label>
                         <img src="../resources/summerSeason.jpg" alt="Defualt Place image"  style="width:450px;height:250px;">
-                        <input type="file" id="place-picture" name="place_pic">    
+                        <input type="file" name="place_pic[]" multiple="">    
                     </div>
     
                     <input type="submit" value="Add place!">

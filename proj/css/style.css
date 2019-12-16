@@ -461,7 +461,8 @@ div.favorite i:hover{
     padding-top: 1em;
 }
 
-#profile button#edit_profile {
+#profile button#edit_profile,
+#place_section #edit_place {
     background-color: #df622c;
     border-color: #df622c;
     border-radius: 1em;
@@ -469,7 +470,8 @@ div.favorite i:hover{
     margin-bottom: 1em;
 }
 
-#profile button > a {
+#profile button > a,
+#edit_place > a {
     color: white;
 }
 

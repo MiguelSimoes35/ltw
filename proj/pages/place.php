@@ -11,15 +11,28 @@ template_header();
 
 $place = get_place_data($_GET['id']);
 $place_id = $_GET['id'];
+$ind = 0;
+
+//aux function 
+$places = get_places($user);
+for($i = 0; $i < count($places); $i++){
+    if($place_id == $places[$i]['id']) {
+        $ind = $i;
+        break;
+    }
+}
+
 ?>
 
 <section id="content">
-
     <section id="place_section">
         <h1><?= $place['title'] ?></h1>
+        <?php if($place['owner'] == $_SESSION['username']) { ?>
+            <button id="edit_place"> <a href= "../pages/edit_place.php?code=<?=$ind?>"> Edit Place </a></button>
+        <?php } ?>
         <div class="place">
             <div id="place_photo">
-                <img src="../resources/beachOpener.jpg" alt="Place photo" style="max-width:600px; max-height:400px;">
+                <img src="../resources/places/<?=$place_id?>/0.jpg" alt="Place photo" style="max-width:600px; max-height:400px;">
             </div>
             <div class="place_info">
                 <?php template_favorite($place_id) ?>

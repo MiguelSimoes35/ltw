@@ -19,7 +19,6 @@
 ?>
     
     <section id="user">
-        Welcome, <?= $_SESSION['username']  ?> 
     </section>    
 <?php
 
