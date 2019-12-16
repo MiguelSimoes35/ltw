@@ -11,9 +11,8 @@
     }
 
     function insert_user($username, $password, $name, $email){
-        echo "deu MERDA";
+
         $db = Database::instance()->db();
-        echo "123";
 
         $hash_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare('INSERT INTO User(username, password, name, email) VALUES(?, ?, ?, ?)');
@@ -181,7 +180,9 @@
         $stmt = $db->prepare('INSERT INTO Place(title, price_day, description, address, location_id, owner, capacity) VALUES(?, ?, ?, ?, ?, ?, ?)');
         $stmt->execute(array($title, $price_day, $description, $address, $location_id, $user, $capacity));
 
-        return true;
+
+
+        return $db->lastInsertId();
 
     }
 

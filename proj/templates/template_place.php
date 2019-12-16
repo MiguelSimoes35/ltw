@@ -10,7 +10,7 @@
             <a href="../pages/place.php?id=<?=$place['id']?>">
                 <div class="place">
                     <div class="place_photo">
-                        <img src="../resources/beachOpener.jpg" alt="Beach" style="max-width:100%;">
+                        <img src="../resources/places/<?=$place['id'] ?>/0.jpg" alt="Beach" style="max-width:100%;">
                     </div>
                     <div class="place_info">
                         <h2 class="title"><?=$place['title']?></h3>

@@ -33,7 +33,7 @@ for($i = 0; $i < count($places); $i++){
         <?php } ?>
         <div class="place">
             <div id="place_photo">
-                <img src="../resources/beachOpener.jpg" alt="Place photo" style="max-width:600px; max-height:400px;">
+                <img src="../resources/places/<?=$place_id?>/0.jpg" alt="Place photo" style="max-width:600px; max-height:400px;">
             </div>
             <div class="place_info">
                 <?php template_favorite($place_id)?>
