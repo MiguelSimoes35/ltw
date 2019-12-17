@@ -19,6 +19,8 @@
             make_reservation($checkin, $checkout, $place_id, $user, $total_price);
 
             // New Notification -> New Reservation
+            new_notification($place_id, $user);
+
             header('Location: ../pages/main.php');
         }
         else{

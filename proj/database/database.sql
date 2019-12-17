@@ -129,5 +129,5 @@ CREATE TABLE [Like] (
 );
 
 
-COMMIT TRANSACTION;
+--COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
