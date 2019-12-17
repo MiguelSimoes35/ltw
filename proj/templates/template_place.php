@@ -30,7 +30,7 @@
 ?>
     <article class="place_small">
     <a href="../pages/place.php?id=<?=$place['id']?>"><div>
-        <img src="../resources/beachOpener.jpg" alt="">
+        <img src="../resources/places/<?=$place['id'] ?>/0.jpg" alt="">
         <div style="background-color: white; width: 350px; height: 80px; opacity: 0.75; position: absolute; bottom: 5px; color: white"><h5>.</h5></div>
         <div style="width: 350px; height: 80px; position: absolute; bottom: 0px; display: grid; grid-template-columns: auto auto auto; grid-template-rows: auto auto; justify-items: center">
             <h2 style="grid-column: 1/4; grid-row: 1/2; margin: 0; padding: 0.2em; justify-self: start;"><?=$place['title']?></h2>

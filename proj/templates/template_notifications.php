@@ -20,7 +20,7 @@
     <!-- NO NOTIFICATIONS-->
     <p class="info_message">You have no notifications</p>
 <?php
-        }
+    }
 ?>
 
 </div>
