@@ -14,7 +14,7 @@ $place_id = $_GET['id'];
 $ind = 0;
 
 //aux function 
-$places = get_places($user);
+$places = get_places($_SESSION['username']);
 for($i = 0; $i < count($places); $i++){
     if($place_id == $places[$i]['id']) {
         $ind = $i;
@@ -100,5 +100,5 @@ for($i = 0; $i < count($places); $i++){
 
 <?php
 template_footer();
-
 ?>
+
