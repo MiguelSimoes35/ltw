@@ -77,7 +77,7 @@ function getFavoritePlaces($username)
 function getNotifications($username) {
     $db = Database::instance()->db();
 
-    $stmt = $db->prepare('SELECT * FROM Notification WHERE user = ? ORDER BY Notification.date DESC');
+    $stmt = $db->prepare('SELECT * FROM Notification WHERE user = ? ORDER BY Notification.id DESC');
     $stmt->execute(array($username));
     return $stmt->fetchAll();
 }
