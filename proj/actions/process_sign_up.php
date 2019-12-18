@@ -1,5 +1,4 @@
 <?php
-    
     include_once('../database/functions.php');
     include_once('../includes/session.php');
     include_once('../actions/process_upload_files.php');
