@@ -302,4 +302,16 @@
 
     }
 
+    function get_number_photos($place_id){
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Photo WHERE place = ?');
+        $stmt->execute(array($place_id));
+
+        return count($stmt->fetchAll());
+
+
+    }
+
 ?>
