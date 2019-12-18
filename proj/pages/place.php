@@ -21,7 +21,6 @@ for($i = 0; $i < count($places); $i++){
         break;
     }
 }
-
 ?>
 
 <section id="content">
@@ -31,8 +30,22 @@ for($i = 0; $i < count($places); $i++){
             <button id="edit_place"> <a href= "../pages/edit_place.php?code=<?=$ind?>"> Edit Place </a></button>
         <?php } ?>
         <div class="place">
-            <div id="place_photo">
-                <img src="../resources/places/<?=$place_id?>/0.jpg" alt="Place photo" style="max-width:600px; max-height:400px;">
+            <div class="place_photo">
+                <!-- <img src="../resources/places/<?=$place_id?>/0.jpg" alt="Place photo" style="max-width:600px; max-height:400px;"> -->
+
+                <?php
+                    for($i = 0; $i < get_number_photos($place_id); $i++){
+                ?>
+                        <div class="mySlides fade">
+                            <div class="numbertext"> <?=$i + 1?> / <?=get_number_photos($place_id)?></div>
+                            <img src="../resources/places/<?=$place_id?>/<?=$i?>.jpg" style="width:600px; height:400px" >
+                        </div>
+                <?php
+                    }
+                ?>
+            <a class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" id="next" onclick="plusSlides(1)">&#10095;</a>
+
             </div>
             <div class="place_info">
                 <?php template_favorite($place_id) ?>
@@ -102,6 +115,35 @@ for($i = 0; $i < count($places); $i++){
         </section>
     </section>
 </section>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+    }
+
+</script>
+
 
 <?php
 template_footer();

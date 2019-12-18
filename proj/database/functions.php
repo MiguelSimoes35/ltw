@@ -267,6 +267,7 @@
     }
 
     function update_place_capacity($id, $capacity) {
+        
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('UPDATE Place SET capacity = ? WHERE id = ?');
@@ -303,5 +304,42 @@
         $stmt->execute(array($place));
 
         return $stmt->fetch()['place_rate'];
+    }
+
+    function new_notification($place_id, $user){
+        $place = get_place_data($place_id);
+        
+        $title = $place['title'];
+
+        $type = "New Reservation!";
+        $description = "$user made a Reservation for your place $title";
+        $seen = "no";
+        $date = date("Y-m-d");
+        $owner = $place['owner'];
+
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('INSERT INTO Notification(type, description, seen, date, user) VALUES(?, ?, ?, ?, ?)');
+        $stmt->execute(array($type, $description, $seen, $date, $owner));
+
+        return true;
+    }
+
+    function change_notification_status($notification){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('UPDATE Notification SET seen = ? WHERE id = ?');
+        $stmt->execute(array("yes", $notification));
+
+        return true;
+    }
+
+    function get_number_photos($place_id){
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Photo WHERE place = ?');
+        $stmt->execute(array($place_id));
+
+        return count($stmt->fetchAll());
     }
 ?>

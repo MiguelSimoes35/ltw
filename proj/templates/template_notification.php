@@ -1,4 +1,6 @@
 <?php 
+
+    include_once('../database/functions.php');
     
     function template_notification($notification) {
         if ($notification['seen'] == 'yes')
@@ -15,6 +17,8 @@
 </article>
     
 <?php
+
+change_notification_status($notification['id']);
 }
 
 ?>
