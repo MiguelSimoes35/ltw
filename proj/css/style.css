@@ -254,7 +254,7 @@ article>img, div>img {
 /*---- Place ----*/
 /*---------------*/
 
-#place_section div.place {
+#place_section div.place{
     max-width: 75em;
     margin: 1em auto;
 }
@@ -270,7 +270,7 @@ article>img, div>img {
     border-radius: 1em;
 }
 
-#place_section  div.place_info h2, #place_section h2 {
+#place_section div.place_info h2, #place_section h2{
     margin: 0;
     padding-top: 1em;
     padding-bottom: 0.2em;
@@ -468,6 +468,79 @@ article.place_small:hover {
     padding: 0.4em;
 }
 
+#reviews {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    padding-top: 1em;
+    margin: 2em auto;
+    background-color: white;
+    border-radius: 1em;
+}
+
+#reviews h2 {
+    margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.2em;
+    margin-left: 1.5em;
+}
+
+#reviews h3 {
+    margin-left: 3em;
+}
+
+#reviews ul {
+    list-style-type: none;
+    margin-top: 1em;
+}
+
+#reviews ul li {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: lightgrey;
+    text-align: justify;
+    border-radius: 1em;
+    margin-bottom: 1em;
+    padding-left: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    width:95%;
+}
+
+#reviews ul li #user{
+    font-weight: 600;
+}
+
+#reviews ul li #comment {
+    margin-left: 2em;
+    width: 94%;
+}
+
+#reviews #add_reviews form {
+    display: flex;
+    flex-direction: row;
+    padding: 1em auto;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#reviews #add_reviews #rating,
+#reviews #add_reviews #comment{
+    padding: 1em;  
+}
+
+#reviews #add_reviews #rating {
+    width: 60px;
+}
+
+#reviews #add_reviews form #send_review {
+    width: 180px;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
 /*--- Favorite Button ---*/
 
 div.favorite {
@@ -569,7 +642,8 @@ div.favorite i:hover{
     flex-direction: row;
 }
 
-#profile_section li {
+#profile_section li,
+#see_all_reviews #see_button {
     background-color: white;
     text-align: center;
     list-style-type: none;
@@ -580,17 +654,24 @@ div.favorite i:hover{
     flex: 1;
 }
 
-#profile_section li a {
+#see_all_reviews #see_button {
+   margin-bottom: 1em;
+}
+
+#profile_section li a,
+#see_all_reviews #see_button a {
     color: black;
     text-decoration: none;
 }
 
-#profile_section li:hover {
+#profile_section li:hover,
+#see_all_reviews #see_button:hover {
     background-color: #2a2f33;
     color: white;
 }
 
-#profile_section li:hover a {
+#profile_section li:hover a,
+#see_all_reviews #see_button:hover a {
     color: white;
 }
 
@@ -616,7 +697,7 @@ div.favorite i:hover{
 #reservations,
 #my_places {
     display: flex;
-    height: 25px;
+    height: 30px;
     align-items: center;
     padding: 0px 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);

@@ -2,7 +2,6 @@
     include_once('../includes/include_database.php');
 
     function available_username($username){
-
         $db = Database::instance()->db();
         $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
         $stmt->execute(array($username));
@@ -11,7 +10,6 @@
     }
 
     function insert_user($username, $password, $name, $email){
-
         $db = Database::instance()->db();
 
         $hash_password = password_hash($password, PASSWORD_DEFAULT);
@@ -30,7 +28,6 @@
 
         return $user !== false && $password == password_verify($password, $user['password']);
     }
-
 
     function get_user_id($username){
         $db = Database::instance()->db();
@@ -97,7 +94,6 @@
     }
 
     function valid_dates($checkin, $checkout, $place_id){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Reservation WHERE (place_id = ? AND checkin <= ? AND checkout >= ?)');
@@ -114,7 +110,6 @@
     }
 
     function make_reservation($checkin, $checkout, $place_id, $user, $total_price){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('INSERT INTO Reservation(checkin, checkout, total_price, place_id, tourist) VALUES(?, ?, ?, ?, ?)');
@@ -124,7 +119,6 @@
     }
 
     function calculate_total_price($checkin, $checkout, $place_id){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT price_day FROM Place WHERE id = ?');
@@ -152,6 +146,15 @@
         return $stmt->fetchAll();
     }
 
+    function get_user_reservations_place($user, $place) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Reservation WHERE place_id = ? AND tourist = ?');
+        $stmt->execute(array($place, $user));
+
+        return $stmt->fetchAll();
+    }
+
     function get_place_name($place_id){
         $db = Database::instance()->db();
 
@@ -163,25 +166,21 @@
     }
 
     function find_location_id($city, $country){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Location WHERE (city = ? AND country = ?)');
         $stmt->execute(array($city, $country));
 
         return $stmt->fetch()['id'];
-
     }
 
     function add_place($title, $description, $address, $price_day, $capacity, $location_id, $user){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('INSERT INTO Place(title, price_day, description, address, location_id, owner, capacity) VALUES(?, ?, ?, ?, ?, ?, ?)');
         $stmt->execute(array($title, $price_day, $description, $address, $location_id, $user, $capacity));
 
         return $db->lastInsertId();
-
     }
 
     function add_like($username, $place_id) {
@@ -189,6 +188,13 @@
 
         $stmt = $db->prepare('INSERT INTO Like(like_id, username, place_id) VALUES(NULL, ?, ?)');
         $stmt->execute(array($username, $place_id));
+    }
+
+    function add_review($rating, $comment, $reservation_id) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('INSERT INTO Review(id, rate, comment, reservation) VALUES(NULL, ?, ?, ?)');
+        $stmt->execute(array($rating, $comment, $reservation_id));
     }
 
     function remove_like($username, $place_id) {
@@ -270,8 +276,37 @@
         return true;
     }
 
+    function get_place_reviews($place) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Review, Reservation WHERE Review.reservation = Reservation.id
+                                                                AND Reservation.place_id = ?');
+        $stmt->execute(array($place));
+
+        return $stmt->fetchAll();
+    }
+
+    function get_user_place_reviews($user, $place) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Review, Reservation WHERE Review.reservation = Reservation.id
+                                                                AND Reservation.place_id = ? AND tourist = ?');
+        $stmt->execute(array($place, $user));
+
+        return $stmt->fetchAll();
+    }
+
+    function calculate_rating($place) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT avg(Review.rate) as place_rate FROM Review, Reservation WHERE Review.reservation = Reservation.id
+                                                                               AND Reservation.place_id = ?');
+        $stmt->execute(array($place));
+
+        return $stmt->fetch()['place_rate'];
+    }
+
     function new_notification($place_id, $user){
-        
         $place = get_place_data($place_id);
         
         $title = $place['title'];
@@ -288,30 +323,23 @@
         $stmt->execute(array($type, $description, $seen, $date, $owner));
 
         return true;
-
     }
 
     function change_notification_status($notification){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('UPDATE Notification SET seen = ? WHERE id = ?');
         $stmt->execute(array("yes", $notification));
 
         return true;
-
     }
 
     function get_number_photos($place_id){
-
         $db = Database::instance()->db();
 
         $stmt = $db->prepare('SELECT * FROM Photo WHERE place = ?');
         $stmt->execute(array($place_id));
 
         return count($stmt->fetchAll());
-
-
     }
-
 ?>
