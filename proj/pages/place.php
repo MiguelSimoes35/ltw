@@ -12,6 +12,7 @@ template_header();
 $place = get_place_data($_GET['id']);
 $place_id = $_GET['id'];
 $place_reviews = get_place_reviews($place_id);
+$numberReviews = count($place_reviews);
 
 //aux function 
 $places = get_places($_SESSION['username']);
@@ -22,6 +23,22 @@ for($i = 0; $i < count($places); $i++){
     }
 }
 ?>
+
+<section id="gallery">
+<?php
+for($i = 0; $i < get_number_photos($place_id); $i++) {
+?>
+        <div class="myLargeSlides fade">
+            <div class="numbertext"> <?=$i + 1?> / <?=get_number_photos($place_id)?></div>
+            <img src="../resources/places/<?=$place_id?>/<?=$i?>.jpg" style="max-width: 80%">
+        </div>
+<?php
+}
+?>
+    <a class="prev" id="p" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" id="n" onclick="plusSlides(1)">&#10095;</a>
+    <a class="slideShowBTN" id="close" onclick="closeGallery()"><i class="material-icons">clear</i></a>
+</section>
 
 <section id="content">
     <section id="place_section">
@@ -45,7 +62,7 @@ for($i = 0; $i < count($places); $i++){
                 ?>
             <a class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" id="next" onclick="plusSlides(1)">&#10095;</a>
-            <a id="gallery" onclick="plusSlides(1)"><i class="material-icons">photo_library</i></a>
+            <a id="openGallery" onclick="openGallery()"><i class="material-icons">photo_library</i></a>
 
             </div>
             <div class="place_info">
@@ -53,16 +70,17 @@ for($i = 0; $i < count($places); $i++){
                 <h2 class="location"><?= $place['city'] ?>, <?= $place['country'] ?>: <?= $place['address']?></h2>
                 <h2 class="capacity">Capacity: <?= $place['capacity'] ?> <i class="material-icons">person</i> </h2>
                 <h2 class="price">Price per day: <?= $place['price_day'] ?> €</h2>
-                <h2>RATING 
+                <h2>Rating:  
                     <?php 
-                    if(count($place_reviews) > 0) {
+                    if($numberReviews > 0) {
                         echo calculate_rating($place_id);
                     }
                     else {
                         echo "--";
                     }
                     ?>
-                    <i class="material-icons">star</i></h2>
+                    <i class="material-icons" style="color: yellow;">star</i>
+                </h2>
                 <h3 class="owner">Posted by <?= $place['owner'] ?></h3>
             </div>
         </div>
@@ -135,12 +153,27 @@ for($i = 0; $i < count($places); $i++){
     function showSlides(n) {
         var i;
         var slides = document.getElementsByClassName("mySlides");
+        let largeSlides = document.getElementsByClassName("myLargeSlides");
+
         if (n > slides.length) {slideIndex = 1}
         if (n < 1) {slideIndex = slides.length}
+
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
+            largeSlides[i].style.display = "none";
         }
         slides[slideIndex-1].style.display = "block";
+        largeSlides[slideIndex-1].style.display = "block";
+    }
+
+    function openGallery() {
+        let gallery = document.getElementById("gallery");
+        gallery.style.display = "inline";
+    }
+
+    function closeGallery() {
+        let gallery = document.getElementById("gallery");
+        gallery.style.display = "none";
     }
 
 </script>

@@ -66,7 +66,10 @@
                     <div id="photo">
                         <!--<label for="picture"> Update your profile picture </label>-->
                         <img src="<?= get_user_photo($_SESSION['username']) ?>" alt="Profile Picture Icon"  style="width:150px;height:150px;">
-                        <input type="file" id="picture" name="profile_photo" placeholder="Update your profile picture">
+                        <div class="upload">
+                            <button class="uploadButton"><i class="material-icons">edit</i></button>
+                            <input type="file" id="picture" name="profile_photo" placeholder="Update your profile picture">
+                        </div>                        
                     </div>
                     <label for="username" id="edit_username"> Username: <?php echo $_SESSION['username'] ?> </label>
                     <br/>

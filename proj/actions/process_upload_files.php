@@ -104,7 +104,7 @@ function roundCorners($filename)
 
     //output, save and free memory
     $newFileName = substr_replace($filename, 'png', -3, 3);
-    imagepng($image, $newFileName);
+    imagepng($image, $newFileName, 0);
     imagedestroy($image);
     imagedestroy($mask);
 }
