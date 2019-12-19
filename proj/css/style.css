@@ -322,12 +322,48 @@ article.place div.place_photo {
 }
 /* ----- SLIDE SHOW ------ */
 
+#place_section div.place_photo {
+    position: relative;
+}
+#place_section div.place_photo:hover {
+    position: relative;
+}
+
+#place_section div.numbertext {
+    position: absolute;
+    bottom: 5px;
+    left: 45%;
+    width: 10%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: rgba(0,0,0,0.5);
+    transition: 0.8s ease;
+    border-radius: 1em;
+}
+
+#place_section a#gallery {
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 10%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: 0.8s ease;
+    border-radius: 1em;
+}
+
 a.prev {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 45%;
+    left: 0px;
     width: auto;
-    margin-top: 150px;
     padding: 16px;
     color: white;
     font-weight: bold;
@@ -340,27 +376,31 @@ a.prev {
 a.next {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 45%;
+    right: 0px;
     width: auto;
-    margin-top: 150px;
     padding: 16px;
     color: white;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-/* Position the "next button" to the right */
-a.next {
-    right: 50%;
     border-radius: 3px 0 0 3px;
+    user-select: none;
 }
   
 /* On hover, add a black background color with a little bit see-through */
-a.prev:hover, a.next:hover {
-    background-color: rgba(0,0,0,0.8);
+#place_section div.place_photo:hover a.prev, 
+#place_section div.place_photo:hover a.next, 
+#place_section div.place_photo:hover div.numbertext{
+    background-color: rgba(0,0,0,0.6);
+}
+
+#place_section div.place_photo:hover a#gallery {
+    opacity: 0.5;
+}
+
+#place_section div.place_photo a#gallery:hover {
+    opacity: 1;
 }
 
 /* ----------------- */ 

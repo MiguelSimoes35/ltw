@@ -37,10 +37,11 @@ let tomorrow = date.toISOString().split('T')[0];
 
 
 let checkin = document.getElementById('checkin');
+let checkout = document.getElementById('checkout');
 
-if (checkin != null) {
+if (checkin != null && checkout != null) {
     checkin.setAttribute('min', today);
-    document.getElementById('checkout').setAttribute('min', tomorrow);
+    checkout.setAttribute('min', tomorrow);
 
     checkin.addEventListener('input', updateCheckout);
 }
@@ -50,9 +51,9 @@ function updateCheckout(event) {
     let newDate = new Date(selected);
     newDate.setDate(newDate.getDate() + 1);
 
-    document.getElementById('checkout').setAttribute('min', newDate.toISOString().split('T')[0]);
+    checkout.setAttribute('min', newDate.toISOString().split('T')[0]);
+    checkout.setAttribute('value', newDate.toISOString().split('T')[0]);
 }
-
 
 
 let request = new XMLHttpRequest();

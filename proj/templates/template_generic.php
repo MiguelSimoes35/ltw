@@ -24,7 +24,8 @@
 
         </header>
 
-<?php } 
+<?php }
+
     function template_footer() {
 ?>
         <footer>
@@ -40,8 +41,15 @@
         $thumbnail = get_user_thumbnail($_SESSION['username']);
 ?>
         <div id = "header_user_section">
-            <a href="profile.php?user=<?=$_SESSION['username']?>"><img src=<?=$thumbnail?> alt="Profile Picture Icon" style="width:40px;height:40px;"></a>
-            <a href="profile.php?user=<?=$_SESSION['username']?>"><?= $_SESSION['username']?></a>
+            <a href="profile.php?user=<?=$_SESSION['username']?>">    
+                <div style="display: block;">
+                    <img src=<?=$thumbnail?> alt="Profile Picture Icon" style="width:40px;height:40px;">
+                    <h5 style="margin: 0; padding: 0;"><?= $_SESSION['username']?></h5>
+                </div>
+            </a>
+            <a href="profile.php?user=<?=$_SESSION['username']?>">
+                <i class="material-icons">notifications</i>
+            </a>
             <form action="../actions/process_logout.php"><input type="submit" id="logout" value="Logout"></form>
         </div>
 <?php

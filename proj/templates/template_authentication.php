@@ -61,7 +61,13 @@
         <section id="edit" class="container">
             <section id="edit_profile" class="authentication">
                 <header><h2>Edit Profile</h2></header>
-                <form action="../actions/process_edit_profile.php" method="post">
+                
+                <form action="../actions/process_edit_profile.php" method="post" enctype="multipart/form-data">
+                    <div id="photo">
+                        <!--<label for="picture"> Update your profile picture </label>-->
+                        <img src="<?= get_user_photo($_SESSION['username']) ?>" alt="Profile Picture Icon"  style="width:150px;height:150px;">
+                        <input type="file" id="picture" name="profile_photo" placeholder="Update your profile picture">
+                    </div>
                     <label for="username" id="edit_username"> Username: <?php echo $_SESSION['username'] ?> </label>
                     <br/>
                     <label for="name" id="full_name">Full name</label>
@@ -70,15 +76,8 @@
                     <label for="email" id="e-mail">E-mail</label>
                     <input type="email" id="email" name="email" value="<?php echo $userdata['email'] ?>" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" minlength="8" required>
-                
-                <div id="photo">
-                    <label for="picture"> Update your profile picture </label>
-                    <img src="<?= get_user_photo($_SESSION['username']) ?>" alt="Profile Picture Icon"  style="width:250px;height:250px;">
-                    <input type="file" id="picture" name="profile_photo">
-                </div>
-
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" minlength="8" required>
                     <input type="submit" value="Update Profile">
                 </form>
             </section>

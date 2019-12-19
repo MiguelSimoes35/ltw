@@ -149,10 +149,10 @@ function get_user_photo($username)
     $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
     $stmt->execute(array($username));
     $path = $stmt->fetch()['path'];
-    if (!file_exists($path . '/profile.jpg')) {
+    if (!file_exists($path . '/profile.png')) {
         return "../resources/default_users.jpg";
     }
-    return $path . '/profile.jpg';
+    return $path . '/profile.png';
 }
 
 function insert_place_photo($place_id, $path){
@@ -171,8 +171,8 @@ function get_user_thumbnail($username)
     $stmt = $db->prepare('SELECT path FROM Photo WHERE user = ?');
     $stmt->execute(array($username));
     $path = $stmt->fetch()['path'];
-    if (!file_exists($path . '/thumbnail.jpg')) {
+    if (!file_exists($path . '/thumbnail.png')) {
         return "../resources/default_users_tb.jpg";
     }
-    return $path . '/thumbnail.jpg';
+    return $path . '/thumbnail.png';
 }

@@ -40,13 +40,14 @@ for($i = 0; $i < count($places); $i++){
                 ?>
                         <div class="mySlides fade">
                             <div class="numbertext"> <?=$i + 1?> / <?=get_number_photos($place_id)?></div>
-                            <img src="../resources/places/<?=$place_id?>/<?=$i?>.jpg" style="width:600px; height:400px" >
+                            <img src="../resources/places/<?=$place_id?>/<?=$i?>.jpg" style="max-width:600px;" >
                         </div>
                 <?php
                     }
                 ?>
             <a class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" id="next" onclick="plusSlides(1)">&#10095;</a>
+            <a id="gallery" onclick="plusSlides(1)"><i class="material-icons">photo_library</i></a>
 
             </div>
             <div class="place_info">

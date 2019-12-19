@@ -52,4 +52,5 @@ else {
     // create error message
     header('Location: ../pages/edit_profile.php');
 }
+
 ?>
