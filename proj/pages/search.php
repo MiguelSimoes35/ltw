@@ -14,7 +14,7 @@ $places = getPlacesBySearch($_GET['where_country'], $_GET['city'], $_GET['checki
 
 template_header();
 ?>
-
+<script>document.title = "Search Places | EasyRent"</script>
 <section id="content">
     <?php
     template_search();

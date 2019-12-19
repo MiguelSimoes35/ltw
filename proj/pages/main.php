@@ -23,7 +23,7 @@
 <?php
 
 ?>
-
+<script>document.title = "Top Rated Places | EasyRent"</script>
 <section id="content">
 <?php
     template_search();

@@ -312,7 +312,18 @@
                                                                                AND Reservation.place_id = ?');
         $stmt->execute(array($place));
 
-        return $stmt->fetch()['place_rate'];
+        return round($stmt->fetch()['place_rate'], 2);
+    }
+
+    function calculate_user_rating($user) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT avg(Review.rate) as user_rate FROM Place, Review, Reservation WHERE Review.reservation = Reservation.id
+                                                                               AND Reservation.place_id = Place.id 
+                                                                               AND Place.owner = ?');
+        $stmt->execute(array($user));
+
+        return round($stmt->fetch()['user_rate'], 2);
     }
 
     function new_notification($place_id, $user){

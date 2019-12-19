@@ -1,6 +1,7 @@
 <?php
 include_once('../templates/template_generic.php');
 include_once('../database/access_database.php');
+include_once('../database/functions.php');
 
 if (!isset($_SESSION['username'])) {
     die(header('Location: login.php'));
@@ -11,16 +12,21 @@ $photo = get_user_photo($_GET['user']);
 
 template_header();
 ?>
+<script>
+    document.title = "Profile | EasyRent"
+</script>
 <section id="content">
     <section id="profile_section">
         <div id="profile">
             <div id="profile_photo">
-                <img src="<?=$photo?>" alt="Profile Picture Icon" style="width:150px;height:150px;">
+                <img src="<?= $photo ?>" alt="Profile Picture Icon" style="width:150px;height:150px;">
+                <h3><?= $_GET['user'] ?></h3>
             </div>
             <div id="profile_info">
-                <p><b> <?= $_GET['user'] ?> </b></p>
-                <p><b> No. of Properties: <?= getUserPlacesCount($_GET['user']) ?> </b></p>
-                <p><b> No. of Reservations: <?= getUserReservationsCount($_GET['user']) ?> </b></p>
+                <h3><b><?= $user['name'] ?></b></h3>
+                <p><b> No. of Properties: </b><?= getUserPlacesCount($_GET['user']) ?></p>
+                <p><b> No. of Reservations: </b><?= getUserReservationsCount($_GET['user']) ?></p>
+                <h3><b> Rating: </b><?= calculate_user_rating($_GET['user']) ?> <i class="material-icons" style="color: orange; font-size:20px;">star</i></h3>
             </div>
             <?php if ($_GET['user'] == $_SESSION['username']) { ?>
                 <button id="edit_profile"> <a href="../pages/edit_profile.php"> Edit Profile </a></button>
@@ -29,11 +35,11 @@ template_header();
 
         <div id="data">
             <ul>
-                <li><b><a href="#" onclick="loadDoc1()">My Reservations</a> </b></li>
-                <li><b><a href="#" onclick="loadDoc2()">My Places</a></b></li>
-                <li><b><a href="#" onclick="loadDoc3()">Favorite Places</a></b></li>
-                <li><b>Messages</b></li>
-                <li><b><a href="#" onclick="loadDoc4()">Notifications</a></b></li>
+                <li><b><a href="#Reservations" onclick="loadDoc1()">My Reservations</a> </b></li>
+                <li><b><a href="#Places" onclick="loadDoc2()">My Places</a></b></li>
+                <li><b><a href="#FavoritePlaces" onclick="loadDoc3()">Favorite Places</a></b></li>
+                <!--<li><b>Messages</b></li>-->
+                <li><b><a href="#Notifications" onclick="loadDoc4()">Notifications</a></b></li>
             </ul>
             <div id="profile-content">
                 <!-- Profile information will display here -->
@@ -44,6 +50,25 @@ template_header();
 
 <!-- Javascript -->
 <script type="text/javascript">
+    let hash = window.location.hash.substr(1);
+
+    load(hash);
+
+    window.addEventListener("hashchange", function() {
+        let newhash = window.location.hash.substr(1);
+        load(newhash);
+    });
+
+    function load(hash) {
+        if (hash == "Places")
+            loadDoc2();
+        else if (hash == "FavoritePlaces")
+            loadDoc3();
+        else if (hash == "Notifications")
+            loadDoc4();
+        else loadDoc1();
+    }
+
     function loadDoc1() {
 
         var xhttp = new XMLHttpRequest();
@@ -54,7 +79,6 @@ template_header();
         };
         xhttp.open("POST", "./my_reservations.php", true);
         xhttp.send();
-
     }
 
     function loadDoc2() {
@@ -67,7 +91,6 @@ template_header();
         };
         xhttp.open("POST", "./my_places.php", true);
         xhttp.send();
-
     }
 
     function loadDoc3() {
@@ -91,7 +114,6 @@ template_header();
         };
         xhttp.open("POST", "../templates/template_favorite_places.php", true);
         xhttp.send();
-
     }
 
     function loadDoc4() {
@@ -107,13 +129,12 @@ template_header();
             console.log(elements);
 
             for (let it = 0; it < elements.length; it++) {
-                    console.log(elements[it]);
-                    elements[it].addEventListener('click', deleteNotificationPressed);
+                console.log(elements[it]);
+                elements[it].addEventListener('click', deleteNotificationPressed);
             }
         };
         xhttp.open("POST", "../templates/template_notifications.php", true);
         xhttp.send();
-
     }
 </script>
 

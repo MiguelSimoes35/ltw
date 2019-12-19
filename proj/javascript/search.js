@@ -107,10 +107,13 @@ function deleteNotificationPressed(event) {
 function removeNotification() {
     console.log(this.responseText);
     let response = JSON.parse(this.responseText);
-    let notifications = document.getElementById("notifications"); 
     let notification = document.getElementById(response["id"]);
-    notifications.removeChild(notification);
-    
+    notification.style.opacity = 0
+    setTimeout(function (notification) {
+        let notifications = document.getElementById("notifications");
+        notifications.removeChild(notification);
+    }, 1000, notification);
+
     /* Check if more notifications exist -> if not insert "You have no notifications"*/ 
 }
 

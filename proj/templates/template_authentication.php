@@ -3,6 +3,7 @@
 
     function template_login() {
 ?>
+    <script>document.title = "Login | EasyRent"</script>
     <section id="login" class="authentication">
         <header><h2>Login</h2></header>
         <form action="../actions/process_login.php" method="post">
@@ -21,6 +22,7 @@
 
     function template_register() {
 ?>
+    <script>document.title = "Sign Up | EasyRent"</script>
     <section id="sign_up" class="authentication">
         <header><h2>Sign up</h2></header>
         <form action="../actions/process_sign_up.php" method="post" enctype="multipart/form-data">
@@ -57,7 +59,7 @@
     function template_edit_profile() {
         $userdata = getUserData($_SESSION['username']);
 ?>
-
+    <script>document.title = "Edit Profile | EasyRent"</script>
         <section id="edit" class="container">
             <section id="edit_profile" class="authentication">
                 <header><h2>Edit Profile</h2></header>

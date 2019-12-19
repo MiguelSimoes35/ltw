@@ -50,6 +50,7 @@
         $ind = $_GET['code'];
         $place = get_places($_SESSION['username'])[$ind];
 ?>
+        <script>document.title = "Edit Place | EasyRent"</script>
         <section id="edit_place" class="authentication">
             <header><h2>Edit Place</h2></header>
             <form action="../actions/process_edit_place.php?code=<?=$ind?>" method="post">

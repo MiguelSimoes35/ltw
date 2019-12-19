@@ -47,7 +47,7 @@
                     <h5 style="margin: 0; padding: 0;"><?= $_SESSION['username']?></h5>
                 </div>
             </a>
-            <a href="profile.php?user=<?=$_SESSION['username']?>">
+            <a href="profile.php?user=<?=$_SESSION['username']?>#Notifications">
                 <i class="material-icons">notifications</i>
             </a>
             <form action="../actions/process_logout.php"><input type="submit" id="logout" value="Logout"></form>
@@ -57,6 +57,7 @@
 
     function template_add_place(){    
         ?>
+            <script>document.title = "Add Place | EasyRent"</script>
             <section id="add-a-place" class="authentication">
                 <header><h2>Add a Place</h2></header>
                 <form action="../actions/process_add_place.php" method="post" enctype="multipart/form-data">     

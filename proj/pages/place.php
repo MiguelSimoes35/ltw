@@ -1,6 +1,7 @@
 <?php
 include_once('../templates/template_generic.php');
 include_once('../templates/template_favorite.php');
+include_once('../templates/template_block_content.php');
 include_once('../database/functions.php');
 
 if (!isset($_SESSION['username'])) {
@@ -82,7 +83,7 @@ for($i = 0; $i < get_number_photos($place_id); $i++) {
                         echo "--";
                     }
                     ?>
-                    <i class="material-icons" style="color: yellow;">star</i>
+                    <i class="material-icons" style="color: orange;">star</i>
                 </h2>
                 <h3 class="owner">Posted by <?= $place['owner'] ?></h3>
             </div>
@@ -93,8 +94,14 @@ for($i = 0; $i < get_number_photos($place_id); $i++) {
                 <?= $place['description'] ?>
             </p>
         </div>
-        <section id="reservation">
+        <section id="reservation" style="position: relative">
+            <?php if($_SESSION['username'] == $place['owner']) {
+                template_block_content("A user cannot book a place of his own");?>
+                <form action="" method="post">
+            <?php
+                } else { ?>
             <form action="../actions/process_reservation.php?id=<?= $place_id ?>" method="post">
+            <?php } ?>
                 <!--<div id="reservation_info">-->
                 <!-- calendar here -->
 
