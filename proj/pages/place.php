@@ -42,10 +42,13 @@ for($i = 0; $i < get_number_photos($place_id); $i++) {
 
 <section id="content">
     <section id="place_section">
-        <h1><?= $place['title'] ?></h1>
-        <?php if($place['owner'] == $_SESSION['username']) { ?>
-            <button id="edit_place"> <a href= "../pages/edit_place.php?code=<?=$ind?>"> Edit Place </a></button>
-        <?php } ?>
+        <header class="title">
+            <h1><?= $place['title'] ?></h1>
+            <?php if($place['owner'] == $_SESSION['username']) { ?>
+                <button id="edit_place"> <a href= "../pages/edit_place.php?code=<?=$ind?>"> Edit Place </a></button>
+                <?php } ?>
+        </header>
+
         <div class="place">
             <div class="place_photo">
                 <!-- <img src="../resources/places/<?=$place_id?>/0.jpg" alt="Place photo" style="max-width:600px; max-height:400px;"> -->
@@ -95,11 +98,10 @@ for($i = 0; $i < get_number_photos($place_id); $i++) {
                 <!--<div id="reservation_info">-->
                 <!-- calendar here -->
 
-                <br>
-                <label for="checkin">Check-In</label>
-                <input type="date" name="checkin" id="checkin" required>
-                <label for="checkout">Check-Out</label>
-                <input type="date" name="checkout" id="checkout" required>
+                <label for="checkin">Check-In <input type="date" name="checkin" id="checkin" required></label>
+                
+                <label for="checkout">Check-Out <input type="date" name="checkout" id="checkout" required></label>
+                
 
                 <!--</div>
                 <!-<button id="make_reservation">Make a reservation!</button>-->

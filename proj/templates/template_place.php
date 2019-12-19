@@ -1,6 +1,7 @@
 <?php
     include_once('../templates/template_favorite.php');
     include_once('../database/functions.php');
+    include_once('../database/access_database.php');
 
     function template_place($place){
         $location = getLocation($place['location_id']);

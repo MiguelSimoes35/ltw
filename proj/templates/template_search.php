@@ -8,7 +8,7 @@
         <form action="../pages/search.php" method="get">
             <!--<input type="text" id="where" name="where" placeholder="Where?" required>-->
             <select name="where_country" id="country" value="">
-                <option value="undefined"></option>
+                <option value="undefined">Country</option>
 
                 <?php foreach ($countries as $country) {
                     ?>
@@ -18,7 +18,7 @@
                 ?>
             </select>
             <select name="city" id="city" value="">
-                <option value="undefined"></option>
+                <option value="undefined">City</option>
             </select>
             <div id="date">
                 <label for="checkin">Check-In</label>
@@ -30,7 +30,7 @@
             <div id="capacity">
                 <label for="capacity">Capacity</label>
                 <select name="capacity" id="capacity" placeholder="Capacity">
-                    <option value="undefined"></option>
+                    <option value="undefined">Capacity</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -46,12 +46,13 @@
             
             <div id="price_range">
                 <label for="min">Min</label>
-                <input type="number" id="min" name="minimum_price" placeholder="Minimum price" step="1"> <!-- Only max maybe -->
+                <input type="number" id="min" name="minimum_price" placeholder="Minimum price" step="1" min="1"> <!-- Only max maybe -->
                 <label for="max">Max</label>
-                <input type="number" id="max" name="maximum_price" placeholder="Maximum price" step="1">
+                <input type="number" id="max" name="maximum_price" placeholder="Maximum price" step="1" min="1">
             </div>
 
-            <input type="submit" id="submit_search" value="Search Place">
+            <input type="submit" id="submit_search" value="Search">
+            <!--<button type="submit"><i class="material-icons">search</i> Search</button>-->
         </form>
     </section>
 <?php        

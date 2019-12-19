@@ -146,6 +146,15 @@
         return $stmt->fetchAll();
     }
 
+    function get_place_reservations($place) {
+        $db = Database::instance()->db();
+
+        $stmt = $db->prepare('SELECT * FROM Reservation WHERE place_id = ?');
+        $stmt->execute(array($place));
+
+        return $stmt->fetchAll();
+    }
+
     function get_user_reservations_place($user, $place) {
         $db = Database::instance()->db();
 
