@@ -19,17 +19,13 @@
             $aux = 0;
             for($i = count($reservations)-1; $i >= 0; $i--)  {
                 if($reservations[$i]['checkout'] < $date) {
-                    if(preg_match('/^[a-zA-Z\s]+$/', $comment)){
+                    if(preg_match('/^[a-zA-Z\s]*(\d+((\.|,)\d+)?)*/', $comment)){
                         add_review($rating, $comment, $reservations[$i]['id']);
                         add_notification("New_Review", $username, $place_id);
                         $aux = 0;
                         header('Location: ../pages/main.php');
                         break;
                     }
-                    else {
-                        header('Location: ../pages/place.php?id='. $place_id);
-                    }
-                    
                 }
                 else {
                     $aux = 1;
