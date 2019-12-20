@@ -213,30 +213,42 @@
         $stmt->execute(array($username, $place_id));
     }
 
-    function add_notification($type, $username, $helper) {
+    function add_notification($type, $username, $place_id) {
+        
         $db = Database::instance()->db();
         $date = date("Y-m-d");
+        
+        $place = get_place_data($place_id);
+        $helper = $place['owner'];
+        $title = $place['title'];
+        
+        $seen = "no";
 
         switch ($type) {
             case 'New_Reservation':
-                $stmt = $db->prepare('INSERT INTO Notification (id, type, description, seen, date, username, helper) VALUES(NULL, "New Reservation", "Description", "no", ?, ?, ?)');
-                $stmt->execute(array($date, $username, $helper));
+                $description = "$username made a new reservation for your place $title";
+                $stmt = $db->prepare('INSERT INTO Notification(type, description, seen, date, user) VALUES("New Reservation!", ?, ?, ?, ?)');
+                $stmt->execute(array($description, $seen, $date, $helper));
                 break;
             case 'New_Review':
-                $stmt = $db->prepare('INSERT INTO Notification (id, type, description, seen, date, username, helper) VALUES(NULL, "New Review", "Description", "no", ?, ?, ?)');
-                $stmt->execute(array($date, $username, $helper));
+                $description = "$username made a review of your place $title";
+                $stmt = $db->prepare('INSERT INTO Notification(type, description, seen, date, user) VALUES("New Review!", ?, ?, ?, ?)');
+                $stmt->execute(array($description, $seen, $date, $helper));
                 break;
             case 'New_Reply':
-                $stmt = $db->prepare('INSERT INTO Notification (id, type, description, seen, date, username, helper) VALUES(NULL, "New Reply", "Description", "no", ?, ?, ?)');
-                $stmt->execute(array($date, $username, $helper));
-                break;
+                
+                //something here!
+
             case 'New_Place_Added':
-                $stmt = $db->prepare('INSERT INTO Notification (id, type, description, seen, date, username, helper) VALUES(NULL, "New Place Added", "Description", "no", ?, ?, ?)');
-                $stmt->execute(array($date, $username, $helper));
+                $description = "You just added a new place called $title";
+                $stmt = $db->prepare('INSERT INTO Notification(type, description, seen, date, user) VALUES("New Place Added!", ?, ?, ?, ?)');
+                $stmt->execute(array($description, $seen, $date, $helper));
                 break;
             default:
                 break;
         }
+
+        return true;
     }
 
     function get_places($user){
