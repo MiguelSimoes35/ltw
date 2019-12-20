@@ -17,7 +17,7 @@ $code = $_GET['code'];
 $userData = getUserData($_SESSION['username']);
 $place = get_places($_SESSION['username'])[$code];
 
-if(preg_match('/^[a-zA-Z\s]+$/', $title) and preg_match('/^[a-zA-Z\s]+$/', $description)){
+if(preg_match('/^[a-zA-Z\s]+$/', $title) and preg_match('/^[a-zA-Z\s]*(\d+((\.|,)\d+)?)*/', $description)){
 
     if($password == password_verify($password, $userData['password'])){
         if($title != $place['title']) {
@@ -41,6 +41,7 @@ if(preg_match('/^[a-zA-Z\s]+$/', $title) and preg_match('/^[a-zA-Z\s]+$/', $desc
     }
 }
 else{
+    $_SESSION['messages'] = 'Invalid values for title and/or description';
     header('Location: ../pages/edit_place.php?code='.$code);
 }
 
