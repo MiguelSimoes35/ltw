@@ -29,3 +29,13 @@
     }
     ?>
 </div>
+
+<?php
+    if (count($reservations) == 0) {
+?>
+    <!-- NO FAVORITE PLACES-->
+    <p class="info_message">You have no reservations</p>
+
+<?php
+    }
+?>

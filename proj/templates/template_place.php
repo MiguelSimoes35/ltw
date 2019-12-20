@@ -3,7 +3,8 @@
     include_once('../database/functions.php');
     include_once('../database/access_database.php');
 
-    function template_place($place){
+    function template_place($place_id){
+        $place = getPlaceData($place_id);
         $location = getLocation($place['location_id']);
 ?>  
         <article class="place">
@@ -26,7 +27,8 @@
 <?php
     }
 
-    function template_place_small($place) {
+    function template_place_small($place_id) {
+        $place = getPlaceData($place_id);
         $location = getLocation($place['location_id']);
 ?>
     <article class="place_small">
@@ -46,6 +48,63 @@
 <?php
     }
 
+    function template_add_place(){    
+        ?>
+            <script>document.title = "Add Place | EasyRent"</script>
+            <section id="add-a-place" class="authentication">
+                <header><h2>Add a Place</h2></header>
+                <form action="../actions/process_add_place.php" method="post" enctype="multipart/form-data">     
+                    <label for="title" id="title">Title</label>
+                    <input type="text" id="title" name="title" required>
+                    
+                    <label for="description" id="description">Description</label>
+                    <input type="textarea" rows="4" cols="50" id="description" name="description" required>
+    
+                    <?php
+                    // gets all countries
+                    $countries = getAllCountries(); 
+                    ?>
+    
+                    <label for="country">Country</label>
+                    <select name="country" id="country" value="">
+                    <option value="undefined"></option>
+    
+                    <?php foreach ($countries as $country) {
+                        ?>
+                        <option value=<?=$country['country']?>><?=$country['country']?></option>
+                        <?php
+                    } 
+                    ?>
+                    </select>
+                    <br>
+    
+                    <label for="city">City</label>
+                    <select name="city" id="city" value="">
+                        <option value="undefined"></option>
+                    </select>
+                    <br>
+    
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+    
+                    <label for="price_day">Price p/ Day (in €) </label>
+                    <input type="number" id="price_day" name="price_day" required>
+    
+                    <label for="capacity">How many people can be at your Place? </label>
+                    <input type="number" id="capacity" name="capacity" required>
+                    
+                    <div id="photo">
+                        <label for="picture"> Upload a picture of your Place </label>
+                        <!--<img src="../resources/summerSeason.jpg" alt="Defualt Place image"  style="width:450px;height:250px;">-->
+                        <input type="file" name="place_pic[]" multiple="">    
+                    </div>
+    
+                    <input type="submit" value="Add place!">
+                </form>
+            </section>
+        <?php    
+    }
+
     function template_edit_place() {
         $ind = $_GET['code'];
         $place = get_places($_SESSION['username'])[$ind];
@@ -53,7 +112,7 @@
         <script>document.title = "Edit Place | EasyRent"</script>
         <section id="edit_place" class="authentication">
             <header><h2>Edit Place</h2></header>
-            <form action="../actions/process_edit_place.php?code=<?=$ind?>" method="post">
+            <form action="../actions/process_edit_place.php?code=<?=$ind?>" method="post" enctype="multipart/form-data">
                 <label for="title" id="title">Title</label>
                 <input type="text" id="title" name="title" value="<?php echo $place['title'] ?>" required>
 
@@ -71,8 +130,7 @@
                     
                 <div id="photo">
                     <label for="picture"> Change the picture of your Place </label>
-                    <img src="../resources/summerSeason.jpg" alt="Default Place image"  style="width:450px;height:250px;">
-                    <input type="file" id="place-picture" name="place_pic">    
+                    <input type="file" name="place_pic[]" multiple="">    
                 </div>
 
                 <input type="submit" value="Update Profile">

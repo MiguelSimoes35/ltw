@@ -32,6 +32,7 @@ if(preg_match('/^[a-zA-Z\s]+$/', $title) and preg_match('/^[a-zA-Z\s]+$/', $desc
         if($capacity != $place['capacity']) {
             update_place_capacity($place['id'], $capacity);
         }
+        update_place_photos($place['id']);
         header('Location: ../pages/place.php?id='.$place['id']);
     }
     else {

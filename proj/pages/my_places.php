@@ -20,25 +20,3 @@
     }
 
 ?>
-<div id="table_header">
-    <div>Place</div> 
-    <div>Capacity</div> 
-    <div>Address</div> 
-    <div>Price P/Day(€)</div>
-</div>
-<?php
-    for($i = 0; $i < count($places); $i++){
-        $id = $places[$i]['id'];
-        ?>
-        <a href="../pages/place.php?id=<?=$id?>">
-            <div id="my_places">
-                <div><?= $places[$i]['title']; ?></div>
-                <div><?= $places[$i]['capacity']; ?></div> 
-                <div><?= $places[$i]['address']; ?></div> 
-                <div><?= $places[$i]['price_day']; ?></div>
-            </div>
-        </a>
-        <?php
-    }
-?>
-

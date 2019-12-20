@@ -145,9 +145,14 @@ function update_profile_photo()
 }
 
 // Place files
+function update_place_photos($place_id) {
+    delete_place_photos($place_id);
+    set_place_photos($place_id);
+}
     
 function set_place_photos($place_id){
-    $path = "../resources/places/$place_id";       
+    $path = "../resources/places/$place_id";    
+    print_r($_FILES);   
         
     for($i = 0; $i < count($_FILES['place_pic']['name']); $i++){
         if(move_uploaded_file($_FILES['place_pic']['tmp_name'][$i], "$path/$i.jpg")){
@@ -155,6 +160,7 @@ function set_place_photos($place_id){
             $target = "$path/$i.jpg";
             insert_place_photo($place_id, $target);
         }
+        else {$_SESSION['messages'] = "Photo not saved"; }
     }
 }
 ?>

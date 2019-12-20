@@ -610,7 +610,7 @@ article.place div.place_info .owner {
 
 
 article.place_small {
-    max-width: 350px;
+    width: 350px;
     position: relative;
     background-color: white;
     margin: 1em;
@@ -787,6 +787,10 @@ div.favorite i:hover {
 #data {
     width: 100%;
 }
+
+#profile-content p {
+    font-size: 18px;
+    }
 
 #profile_photo {
     padding: 1em;

@@ -27,6 +27,9 @@ function template_place_reservations($place) {
         }
         ?>
         </div>
+        <?php if (count($reservations) == 0){?>
+            <p class="info_message">No reservations</p>
+        <?php } ?>
     </article>
 <?php
 }

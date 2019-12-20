@@ -42,7 +42,9 @@ for($i = 0; $i < get_number_photos($place_id); $i++) {
     <a class="next" id="n" onclick="plusSlides(1)">&#10095;</a>
     <a class="slideShowBTN" id="close" onclick="closeGallery()"><i class="material-icons">clear</i></a>
 </section>
-
+<script>
+    document.title = "<?= $place['title'] ?> | EasyRent"
+</script>
 <section id="content">
     <section id="place_section">
         <header class="title">

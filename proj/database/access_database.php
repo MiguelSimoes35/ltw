@@ -9,6 +9,15 @@ function getUserData($username) {
     return $stmt->fetch();
 }
 
+function getPlaceData($place) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT * FROM Place WHERE Place.id = ?');
+    $stmt->execute(array($place['id']));
+
+    return $stmt->fetch();
+}
+
 function getAllPlaces() {
     $db = Database::instance()->db();
 
@@ -17,9 +26,17 @@ function getAllPlaces() {
     return $stmt->fetchAll();
 }
 
+function getPopularPlaces() {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare('SELECT place_id as id, count(*) as NoReservations FROM Reservation GROUP BY place_id LIMIT 3');
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
 function getPlacesBySearch($country, $city, $checkin, $checkout, $capacity, $min_price, $max_price) {
     $db = Database::instance()->db();
-    $query = 'SELECT * FROM Place, Location WHERE Place.location_id = Location.id AND (NOT EXISTS (SELECT place_id AS id FROM Reservation WHERE (((checkin <= ? AND checkout > ?) OR (checkin < ? AND checkout >= ?) OR (? <= checkin AND ? > checkin) OR (? < checkout AND ? >= checkout)) AND Reservation.place_id=Place.id)))';
+    $query = 'SELECT Place.id FROM Place, Location WHERE Place.location_id = Location.id AND (NOT EXISTS (SELECT place_id AS id FROM Reservation WHERE (((checkin <= ? AND checkout > ?) OR (checkin < ? AND checkout >= ?) OR (? <= checkin AND ? > checkin) OR (? < checkout AND ? >= checkout)) AND Reservation.place_id=Place.id)))';
     $variables = array($checkin, $checkin, $checkout, $checkout, $checkin, $checkout, $checkin, $checkout);
 
     if ($country != null && $country != 'undefined') {
@@ -142,13 +159,6 @@ function get_user_photo($username) {
     return $path . '/profile.png';
 }
 
-function insert_place_photo($place_id, $path) {
-    $db = Database::instance()->db();
-
-    $stmt = $db->prepare("INSERT INTO Photo VALUES(NULL, ?, NULL, ?)");        
-    $stmt->execute(array($path, $place_id));
-}
-
 function get_user_thumbnail($username) {
     $db = Database::instance()->db();
 
@@ -160,3 +170,18 @@ function get_user_thumbnail($username) {
     }
     return $path . '/thumbnail.png';
 }
+
+function insert_place_photo($place_id, $path) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("INSERT INTO Photo VALUES(NULL, ?, NULL, ?)");        
+    $stmt->execute(array($path, $place_id));
+}
+
+function delete_place_photos($place_id) {
+    $db = Database::instance()->db();
+
+    $stmt = $db->prepare("DELETE FROM  Photo WHERE place = ?");        
+    $stmt->execute(array($place_id));
+}
+

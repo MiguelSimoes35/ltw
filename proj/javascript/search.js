@@ -108,7 +108,7 @@ function deleteNotificationPressed(event) {
     let id = event.target.id;
     let request = new XMLHttpRequest();
     request.addEventListener("load", removeNotification);
-    request.open("get", "../database/deleteNotification.php?id=" + id, true);
+    request.open("get", "../database/delete_notification.php?id=" + id, true);
     request.send();
 }
 
