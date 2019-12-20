@@ -7,6 +7,8 @@
     $comment = $_POST['comment'];
     $place_id = $_GET['place'];
 
+    $username = $_SESSION['username'];
+
     $date = date('Y-m-d');
 
     $reservations = get_user_reservations_place($_SESSION['username'], $place_id);
@@ -17,10 +19,17 @@
             $aux = 0;
             for($i = count($reservations)-1; $i >= 0; $i--)  {
                 if($reservations[$i]['checkout'] < $date) {
-                    add_review($rating, $comment, $reservations[$i]['id']);
-                    $aux = 0;
-                    header('Location: ../pages/main.php');
-                    break;
+                    if(preg_match('/^[a-zA-Z\s]+$/', $comment)){
+                        add_review($rating, $comment, $reservations[$i]['id']);
+                        add_notification("New_Review", $username, $place_id);
+                        $aux = 0;
+                        header('Location: ../pages/main.php');
+                        break;
+                    }
+                    else {
+                        header('Location: ../pages/place.php?id='. $place_id);
+                    }
+                    
                 }
                 else {
                     $aux = 1;

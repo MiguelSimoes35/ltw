@@ -10,26 +10,35 @@
     $name = $_POST['name'];
     $email = $_POST['email'];
 
-    if($password != $r_password){
-        // create error message
-        header('Location: ../pages/sign_up.php');
-    }
+    if(preg_match('/^[A-Z\d]+$/i', $username) and preg_match('/^[a-zA-Z\s]+$/', $name)){
+        
+        if($password != $r_password){
+            // create error message
+            header('Location: ../pages/sign_up.php');
+        }
+        
     
-
-    if(!available_username($username)){
-        // create error message
-        header('Location: ../pages/sign_up.php');
-    }
+        if(!available_username($username)){
+            // create error message
+            header('Location: ../pages/sign_up.php');
+        }
+        
     
+        if(insert_user($username, $password, $name, $email)) {
+            mkdir("../resources/users/$username");
+            $_SESSION['username'] = $username;
+            set_profile_photo();
+            header('Location: ../pages/main.php'); 
+        }
+        else {
+            header('Location: ../pages/sign_up.php');
+        }
 
-    if(insert_user($username, $password, $name, $email)) {
-        mkdir("../resources/users/$username");
-        $_SESSION['username'] = $username;
-        set_profile_photo();
-        header('Location: ../pages/main.php'); 
-    }
-    else {
+      }
+      else{
         header('Location: ../pages/sign_up.php');
-    }
+      }
+
+    
 
 ?>

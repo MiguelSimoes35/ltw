@@ -7,13 +7,13 @@
 
 
   if (valid_login($username, $password)) {
-    echo "super";
-    //$_SESSION['username'] = $username;
-    //echo "success!";
-    //$_SESSION['messages'][] = array('type' => 'success', 'content' => 'Logged in successfully!');
-    $_SESSION['username'] = $username;
-    header('Location: ../pages/main.php');
-    //header('Location: ../pages/list.php');
+    if(preg_match('/^[A-Z\d]+$/i', $username)){
+      $_SESSION['username'] = $username;
+      header('Location: ../pages/main.php');
+    }
+    else{
+      header('Location: ../pages/login.php');
+    }
   } 
   else {
     echo ":(";

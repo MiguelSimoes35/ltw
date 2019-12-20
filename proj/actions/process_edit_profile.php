@@ -36,21 +36,28 @@ if($oldpassword == password_verify($oldpassword, $userData['password'])) {
     }
 }
 
-if($password == password_verify($password, $userData['password'])){
-    if($name != $userData['name']) {
-        update_name($_SESSION['username'], $name);
+if(preg_match('/^[a-zA-Z\s]+$/', $name)){
+    if($password == password_verify($password, $userData['password'])){
+        if($name != $userData['name']) {
+            update_name($_SESSION['username'], $name);
+        }
+        if($email != $userData['email']) {
+            update_email($_SESSION['username'], $name);
+        }
+        // if for the pic -> when update photo available
+        update_profile_photo();
+        // create success message
+        header('Location: ../pages/profile.php?user=' . $_SESSION['username']);
     }
-    if($email != $userData['email']) {
-        update_email($_SESSION['username'], $name);
+    else {
+        // create error message
+        header('Location: ../pages/edit_profile.php');
     }
-    // if for the pic -> when update photo available
-    update_profile_photo();
-    // create success message
-    header('Location: ../pages/profile.php?user=' . $_SESSION['username']);
 }
-else {
-    // create error message
+else{
     header('Location: ../pages/edit_profile.php');
 }
+
+
 
 ?>
