@@ -29,7 +29,7 @@ template_header();
                 <h3><b> Rating: </b><?= calculate_user_rating($_GET['user']) ?> <i class="material-icons" style="color: orange; font-size:20px;">star</i></h3>
             </div>
             <?php if ($_GET['user'] == $_SESSION['username']) { ?>
-                <button id="edit_profile"> <a href="../pages/edit_profile.php"> Edit Profile </a></button>
+                <a class="button_link" href="../pages/edit_profile.php"><button id="edit_profile">  Edit Profile </button></a>
             <?php } ?>
         </div>
 

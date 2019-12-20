@@ -7,7 +7,7 @@ include_once('../database/functions.php');
 ?>
 <section id="see_all_reviews">
     <div id="see_button">
-        <a href="#" onclick="loadReviews()">See all the reviews for this place 
+        <a href="#see_all_reviews" onclick="loadReviews()">See all the reviews for this place 
         <i class="material-icons">arrow_drop_down</i>
         </a>
     </div>

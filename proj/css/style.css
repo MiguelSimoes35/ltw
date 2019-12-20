@@ -7,9 +7,14 @@
 /*-------------------*/
 
 body {
-    /*background-image: url(../resources/villageOpener.jpg);*/
+    background-image: url(../resources/bg.jpg);
     font-family: Cambria, Candara, Georgia, Times, 'Times New Roman', serif;
     margin: 0;
+    
+    --main_color: #03396c;
+    --main_bg_color: #b3cde0;
+    --secondary_color: #005b96;
+    --button_color: #df622c;
 }
 
 a {
@@ -21,8 +26,12 @@ h1 {
     font-size: 32px;
 }
 
+label {
+    font-weight: bold;
+}
+
 body>header {
-    background-color: #046DD5;
+    background-color: var(--main_color);
     text-decoration: none;
     color: white;
     font-style: normal;
@@ -62,6 +71,8 @@ body>footer p {
 div.block_content {
     z-index: 999;
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -119,8 +130,9 @@ div.block_content:hover {
 
 body>.authentication,
 body>.container>.authentication {
-    border: 2px solid #046DD5;
-    background-color: #b3cde0;
+    border: 2px solid var(--secondary_color);
+    border-radius: 0.5em;
+    background-color: var(--main_bg_color);
     margin: 30px auto;
     width: 30em;
 }
@@ -158,6 +170,9 @@ body>.container>.authentication {
     text-align: center;
 }
 
+#edit_profile div#photo {
+    text-align: center;
+}
 #edit_profile>form>#edit_username {
     box-sizing: border-box;
 }
@@ -185,11 +200,18 @@ body>.container>.authentication {
 
 /*------------------------*/
 
+button {
+    background-color: var(--button_color);
+    color: white;
+    cursor: pointer;
+    margin: 0;
+}
+
 input {
     width: 90%;
     padding: 1em;
     border: none;
-    border-bottom: 2px solid #046DD5;
+    border-bottom: 2px solid var(--secondary_color);
     border-radius: 0.5em;
     box-sizing: border-box;
     display: block;
@@ -205,7 +227,7 @@ select {
 
 input[type=submit] {
     width: 100%;
-    background-color: #df622c;
+    background-color: var(--button_color);
     border: none;
     color: white;
     padding: 1em 2em;
@@ -225,7 +247,7 @@ input[type=submit] {
 /*------------------*/
 
 body>#content {
-    background-color: #b3cde0;
+    background-color: var(--main_bg_color);
     width: 80em;
     margin: 2em auto;
     padding: 1em;
@@ -255,12 +277,12 @@ div>img {
 
 #search,
 #reservation {
-    background-color: #03396c;
+    background-color: var(--main_color);
     margin: 0em auto;
     margin-bottom: 1em;
     max-width: 75em;
     border-radius: 1em;
-    border: 2px solid #046DD5;
+    border: 2px solid var(--secondary_color);
 }
 
 #search form {
@@ -599,39 +621,38 @@ article.place_small:hover {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 95%;
-    padding-top: 1em;
+    max-width: 75em;
     margin: 2em auto;
     background-color: white;
     border-radius: 1em;
 }
 
 #reviews h2 {
-    margin: 0;
+    margin: 1em;
     padding-top: 0.5em;
     padding-bottom: 0.2em;
     margin-left: 1.5em;
 }
 
 #reviews h3 {
-    margin-left: 3em;
+    margin-left: 1em;
 }
 
 #reviews ul {
     list-style-type: none;
     margin-top: 1em;
+    padding: 0;
 }
 
 #reviews ul li {
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.4);
     background-color: lightgrey;
     text-align: justify;
     border-radius: 1em;
+    margin: 1em auto;
     margin-bottom: 1em;
     padding-left: 1em;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-    width: 95%;
+    width: 85%;
 }
 
 #reviews ul li #user {
@@ -643,11 +664,21 @@ article.place_small:hover {
     width: 94%;
 }
 
+#add_reviews {
+    position: relative;
+    padding: 0 1em;
+    margin: 1em auto;
+    margin-top: 0;
+    max-width: 90%;
+    border-radius: 1em;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
 #reviews #add_reviews form {
     display: flex;
     flex-direction: row;
     padding: 1em auto;
-    height: 50px;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -656,6 +687,8 @@ article.place_small:hover {
 #reviews #add_reviews #rating,
 #reviews #add_reviews #comment {
     padding: 1em;
+    border-radius: 1em;
+    font-family: Cambria, Candara, Georgia, Times, 'Times New Roman', serif;;
 }
 
 #reviews #add_reviews #rating {
@@ -666,6 +699,10 @@ article.place_small:hover {
     width: 180px;
     margin-right: 1em;
     margin-left: 1em;
+}
+
+#review-container {
+    text-align: center;
 }
 
 
@@ -795,6 +832,7 @@ div.favorite i:hover {
 
 #see_all_reviews #see_button {
     margin-bottom: 1em;
+    transition: 0.5s linear;
 }
 
 #profile_section li a,
@@ -857,8 +895,8 @@ div.favorite i:hover {
     padding: 1em;
     margin-bottom: 1em;
     position: absolute;
-    right: 430px;
-    bottom: 10px;
+    right: 25px;
+    top: 25px;
     cursor: pointer;
     color: white;
 }
@@ -932,11 +970,11 @@ article.notification div {
 }
 
 article.notification div.unseen {
-    background-color: black;
+    background-color: rgba(0,0,0,0.8);
 }
 
 article.notification div.seen {
-    background-color: grey;
+    background-color: rgb(99, 99, 99);
 }
 
 article.notification div i {

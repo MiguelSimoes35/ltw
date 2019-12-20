@@ -46,7 +46,7 @@ for($i = 0; $i < get_number_photos($place_id); $i++) {
         <header class="title">
             <h1><?= $place['title'] ?></h1>
             <?php if($place['owner'] == $_SESSION['username']) { ?>
-                <button id="edit_place"> <a href= "../pages/edit_place.php?code=<?=$ind?>"> Edit Place </a></button>
+                <a class="button_link" href= "../pages/edit_place.php?code=<?=$ind?>"><button id="edit_place"> Edit Place </button></a>
                 <?php } ?>
         </header>
 
@@ -119,21 +119,27 @@ for($i = 0; $i < get_number_photos($place_id); $i++) {
     </section>
     <section id="reviews">
         <h2>Reviews</h2>
-        <h3>Add a Review</h3>
         <section id="add_reviews">
+            <h3>Add a Review</h3>
+            <?php if($_SESSION['username'] == $place['owner']) {
+                template_block_content("A user cannot rate a place of his own");?>
+                <form action="" method="post">
+            <?php
+                } else { ?>
             <form action="../actions/process_add_review.php?place=<?=$place_id?>" method="post" enctype="multipart/form-data">
-                <label for="rating" id="rating">Rating</label>
-                <input type="number" id="rating" name="rating" required>
-
-                <label for="comment" id="comment">Comment</label>
-                <input type="textarea" rows="4" cols="50" id="comment" name="comment" required>
+            <?php } ?>
+                <label for="rating" id="rating">
+                    Rating
+                    <input type="number" id="rating" name="rating" min="1" max="5" required>
+                </label>
+                <textarea rows="3" cols="50" id="comment" name="comment" placeholder="Tell us your experience..." required></textarea>
 
                 <input type="submit" id="send_review" value="Send Review">
             </form>
         </section>
         <section id="see_all_reviews">
             <div id="see_button">
-                <a href="#" onclick="loadReviews()">See all the reviews for this place 
+                <a href="#see-all-reviews" onclick="loadReviews()">See all the reviews for this place 
                 <i class="material-icons">arrow_drop_down</i>
                 </a>
             </div>

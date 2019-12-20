@@ -44,7 +44,7 @@
             
             <div id="photo">
                 <label for="picture"> Upload a profile picture: </label>
-                <br><img src="../resources/pic1.png" alt="Profile Picture Icon"  style="width:150px;height:150px;">
+                <br><!--<img src="../resources/pic1.png" alt="Profile Picture Icon"  style="width:150px;height:150px;">-->
                 <input type="file" id="picture" name="profile_photo">    
             </div>
 

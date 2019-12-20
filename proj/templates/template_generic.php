@@ -102,7 +102,7 @@
                     
                     <div id="photo">
                         <label for="picture"> Upload a picture of your Place </label>
-                        <img src="../resources/summerSeason.jpg" alt="Defualt Place image"  style="width:450px;height:250px;">
+                        <!--<img src="../resources/summerSeason.jpg" alt="Defualt Place image"  style="width:450px;height:250px;">-->
                         <input type="file" name="place_pic[]" multiple="">    
                     </div>
     

@@ -71,7 +71,7 @@
                     
                 <div id="photo">
                     <label for="picture"> Change the picture of your Place </label>
-                    <img src="../resources/summerSeason.jpg" alt="Defualt Place image"  style="width:450px;height:250px;">
+                    <img src="../resources/summerSeason.jpg" alt="Default Place image"  style="width:450px;height:250px;">
                     <input type="file" id="place-picture" name="place_pic">    
                 </div>
 
