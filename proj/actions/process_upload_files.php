@@ -3,10 +3,18 @@ include_once('../database/access_database.php');
 
 function upload_user_photo($path)
 {
+    $extention = $_FILES['profile_photo']['type'];
 
-    $originalFileName = $path . "/profile_original.jpg";
-    $photoFileName = $path . "/profile.jpg";
-    $thumbnailFileName = $path . "/thumbnail.jpg";
+    if ($extention == 'image/jpeg'){
+        $originalFileName = $path . "/profile_original.jpg";
+        $photoFileName = $path . "/profile.jpg";
+        $thumbnailFileName = $path . "/thumbnail.jpg";
+    }
+    else if ($extention == 'image/png'){
+        $originalFileName = $path . "/profile_original.png";
+        $photoFileName = $path . "/profile.png";
+        $thumbnailFileName = $path . "/thumbnail.png";
+    } 
 
     if (file_exists($originalFileName))
         unlink($originalFileName);
@@ -15,8 +23,6 @@ function upload_user_photo($path)
         unlink($photoFileName);
 
     move_uploaded_file($_FILES['profile_photo']['tmp_name'], $originalFileName);
-
-    $extention = $_FILES['profile_photo']['type'];
 
     echo $extention;
 
@@ -81,8 +87,10 @@ function upload_user_photo($path)
     roundCorners($photoFileName);
     roundCorners($thumbnailFileName);
 
-    unlink($photoFileName);
-    unlink($thumbnailFileName);
+    if ($extention == 'image/jpeg'){
+        unlink($photoFileName);
+        unlink($thumbnailFileName);
+    }
 }
 
 function roundCorners($filename)
