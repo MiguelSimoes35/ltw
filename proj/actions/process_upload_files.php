@@ -30,6 +30,11 @@ function upload_user_photo($path)
     $original_height = imagesy($original);
     $min_original = min($original_width, $original_height);
 
+    $newwidth = 0;
+    $newheight = 0;
+    $newwidth_tb = 0;
+    $newheight_tb = 0;
+
     if ($original_width > $original_height) {
         $newheight = 150;
         $newwidth = 150 * $original_width / $original_height;
@@ -41,7 +46,7 @@ function upload_user_photo($path)
         $newwidth_tb = 50;
         $newheight_tb = 50 * $original_width / $original_height;      
     }
-
+    
     $scaledOriginal = imagescale($original, $newwidth, $newheight);
     $min_scaledoriginal = min($newwidth, $newheight);
 
@@ -58,7 +63,9 @@ function upload_user_photo($path)
     }
 
     $squared = imagecreatetruecolor(150, 150);
-    imagecopyresampled($squared, $scaledOriginal, 0, 0, $src_x, $src_y, 150, 150, $min_scaledoriginal, $min_scaledoriginal);
+    if($scaledOriginal != false){
+        imagecopyresampled($squared, $scaledOriginal, 0, 0, $src_x, $src_y, 150, 150, $min_scaledoriginal, $min_scaledoriginal);
+    }
     imagejpeg($squared, $photoFileName, 100);
 
     if ($newwidth_tb > $newheight_tb) {

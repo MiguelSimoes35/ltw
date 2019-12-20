@@ -4,40 +4,42 @@
     include_once('../actions/process_upload_files.php');
 
     // variables
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $r_password = $_POST['confirm_password'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['confirm_password']) and isset($_POST['name']) and isset($_POST['email'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $r_password = $_POST['confirm_password'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
 
-    if(preg_match('/^[A-Z\d]+$/i', $username) and preg_match('/^[a-zA-Z\s]+$/', $name)){
+        if(preg_match('/^[A-Z\d]+$/i', $username) and preg_match('/^[a-zA-Z\s]+$/', $name)){
+            
+            if($password != $r_password){
+                // create error message
+                header('Location: ../pages/sign_up.php');
+            }
+            
         
-        if($password != $r_password){
-            // create error message
-            header('Location: ../pages/sign_up.php');
-        }
+            if(!available_username($username)){
+                // create error message
+                header('Location: ../pages/sign_up.php');
+            }
+            
         
-    
-        if(!available_username($username)){
-            // create error message
-            header('Location: ../pages/sign_up.php');
-        }
-        
-    
-        if(insert_user($username, $password, $name, $email)) {
-            mkdir("../resources/users/$username");
-            $_SESSION['username'] = $username;
-            set_profile_photo();
-            header('Location: ../pages/main.php'); 
-        }
-        else {
-            header('Location: ../pages/sign_up.php');
-        }
+            if(insert_user($username, $password, $name, $email)) {
+                mkdir("../resources/users/$username");
+                $_SESSION['username'] = $username;
+                set_profile_photo();
+                header('Location: ../pages/main.php'); 
+            }
+            else {
+                header('Location: ../pages/sign_up.php');
+            }
 
-      }
-      else{
-        header('Location: ../pages/sign_up.php');
-      }
+        }
+        else{
+            header('Location: ../pages/sign_up.php');
+        }
+    }
 
     
 
