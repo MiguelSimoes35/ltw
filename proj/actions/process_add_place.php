@@ -15,7 +15,7 @@ $city = $_POST['city'];
 $location_id = find_location_id($city, $country);
 $user = $_SESSION['username'];
 
-if(preg_match('/^[a-zA-Z\s]+$/', $title) and preg_match('/^[a-zA-Z\s]+$/', $description) and preg_match('/^[a-zA-Z\s]+$/', $address)){
+if(preg_match('/^[0-9a-zA-Z\s]+$/', $title) and preg_match('/^[0-9a-zA-Z\s]+$/', $description) and preg_match('/^[0-9a-zA-Z\s]+$/', $address)){
     $place_id = add_place($title, $description, $address, $price_day, $capacity, $location_id, $user);
     add_notification("New_Place_Added", $user, $place_id);
     mkdir("../resources/places/$place_id");
