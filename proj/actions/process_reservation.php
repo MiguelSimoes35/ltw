@@ -25,7 +25,7 @@
             header('Location: ../pages/main.php');
         }
         else{
-            // deal with bad reservation
+            $_SESSION['messages'] = 'Invalid Date';
             header('Location: ../pages/place.php?id='.$place_id);
         }
     }

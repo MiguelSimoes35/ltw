@@ -10,6 +10,8 @@ body {
     background-image: url(../resources/bg.jpg);
     font-family: Cambria, Candara, Georgia, Times, 'Times New Roman', serif;
     margin: 0;
+    margin-bottom: 60px;
+
     
     --main_color: #03396c;
     --main_bg_color: #b3cde0;
@@ -56,6 +58,11 @@ body>header a {
 
 body>footer {
     background-color: lightgrey;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
     margin: 0px;
     padding: 10px;
     text-align: right;

@@ -1,3 +1,11 @@
+let warning = document.getElementById('warning');
+
+if (warning != null) {
+    setTimeout(function () {
+        warning.style.opacity = 0;
+        setTimeout(function () {let body = document.getElementsByTagName('body')[0]; body.removeChild(warning);}, 1000)
+    }, 10000, );
+}
 
 
 let country = document.getElementById('country');
@@ -113,7 +121,7 @@ function removeNotification() {
         let notifications = document.getElementById("notifications");
         notifications.removeChild(notification);
     }, 1000, notification);
-
-    /* Check if more notifications exist -> if not insert "You have no notifications"*/ 
 }
+
+
 

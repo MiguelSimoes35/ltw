@@ -1,5 +1,6 @@
 <?php
 include_once('../templates/template_generic.php');
+include_once('../templates/template_warning.php');
 include_once('../templates/template_favorite.php');
 include_once('../templates/template_block_content.php');
 include_once('../database/functions.php');
@@ -9,6 +10,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 template_header();
+template_warning();
 
 $place = get_place_data($_GET['id']);
 $place_id = $_GET['id'];
@@ -132,7 +134,7 @@ for($i = 0; $i < get_number_photos($place_id); $i++) {
                     Rating
                     <input type="number" id="rating" name="rating" min="1" max="5" required>
                 </label>
-                <textarea rows="3" cols="50" id="comment" name="comment" placeholder="Tell us your experience..." required></textarea>
+                <textarea rows="3" cols="50" id="comment" name="comment" placeholder="Tell us your experience..."></textarea>
 
                 <input type="submit" id="send_review" value="Send Review">
             </form>

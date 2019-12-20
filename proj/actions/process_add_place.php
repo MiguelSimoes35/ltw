@@ -25,6 +25,7 @@ if(preg_match('/^[a-zA-Z\s]+$/', $title) and preg_match('/^[a-zA-Z\s]+$/', $desc
     header('Location: ../pages/main.php');
 }
 else{
+    $_SESSION['messages'] = 'Inserted data is invalid';
     header('Location: ../pages/add_place.php');
 }
 

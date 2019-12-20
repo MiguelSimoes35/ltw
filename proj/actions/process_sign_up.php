@@ -13,13 +13,13 @@
     if(preg_match('/^[A-Z\d]+$/i', $username) and preg_match('/^[a-zA-Z\s]+$/', $name)){
         
         if($password != $r_password){
-            // create error message
+            $_SESSION['message'] = "Passwords do not match";
             header('Location: ../pages/sign_up.php');
         }
         
     
         if(!available_username($username)){
-            // create error message
+            $_SESSION['message'] = "Username already being used";
             header('Location: ../pages/sign_up.php');
         }
         
@@ -35,9 +35,10 @@
         }
 
       }
-      else{
+    else{
+        $_SESSION['message'] = "Inserted data is invalid";
         header('Location: ../pages/sign_up.php');
-      }
+    }
 
     
 

@@ -1,6 +1,7 @@
 <?php 
     include_once('../includes/include_database.php');
     include_once('../templates/template_generic.php');
+    include_once('../templates/template_warning.php');
     include_once('../templates/template_search.php');
     include_once('../templates/template_place.php');
     include_once('../database/access_database.php');

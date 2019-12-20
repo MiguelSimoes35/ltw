@@ -16,7 +16,7 @@
     }
   } 
   else {
-    echo ":(";
+    $_SESSION['messages'] = 'Username or Password incorrect';
     //$_SESSION['messages'][] = array('type' => 'error', 'content' => 'Login failed!');
     header('Location: ../pages/login.php');
   }

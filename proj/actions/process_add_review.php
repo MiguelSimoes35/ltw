@@ -36,17 +36,17 @@
                 }
             }
             if($aux == 1) {
-                //error message -> you have to wait for the final of your reservation to add a review
+                $_SESSION['messages'] = 'You have to wait for the final of your reservation to add a review';
                 header('Location: ../pages/place.php?id='. $place_id);
             }
         }
         else {
-            //error message -> no reservations for this place
+            $_SESSION['messages'] = 'Only previous visitors can submit a review';
             header('Location: ../pages/place.php?id='. $place_id);
         }
     }
     else {
-        //error message -> you already gave a review for this place
+        $_SESSION['messages'] = 'You have already submited a review for this property';
         header('Location: ../pages/place.php?id='. $place_id);
     }
 ?>

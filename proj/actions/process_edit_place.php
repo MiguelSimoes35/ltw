@@ -35,7 +35,7 @@ if(preg_match('/^[a-zA-Z\s]+$/', $title) and preg_match('/^[a-zA-Z\s]+$/', $desc
         header('Location: ../pages/place.php?id='.$place['id']);
     }
     else {
-        // create error message
+        $_SESSION['messages'] = 'Incorrect Password';
         header('Location: ../pages/edit_place.php?code='.$code);
     }
 }

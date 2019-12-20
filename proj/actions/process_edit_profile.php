@@ -25,13 +25,12 @@ if($oldpassword == password_verify($oldpassword, $userData['password'])) {
             header('Location: ../pages/profile.php?user=' . $_SESSION['username']);
         }
         else {
-            echo "Confirmation password different from new password :(";
-            // create error message
+            $_SESSION['messages'] = 'Passwords do not match';
             header('Location: ../pages/edit_profile.php');
         }
     }
     else {
-        //create error message
+        $_SESSION['messages'] = 'New password is the same as the current one';
         header('Location: ../pages/edit_profile.php');
     }
 }
@@ -50,11 +49,12 @@ if(preg_match('/^[a-zA-Z\s]+$/', $name)){
         header('Location: ../pages/profile.php?user=' . $_SESSION['username']);
     }
     else {
-        // create error message
+        $_SESSION['messages'] = 'Incorrect Password';
         header('Location: ../pages/edit_profile.php');
     }
 }
 else{
+    $_SESSION['messages'] = 'Inserted data is invalid';
     header('Location: ../pages/edit_profile.php');
 }
 

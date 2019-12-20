@@ -1,5 +1,6 @@
 <?php
 include_once('../templates/template_generic.php');
+include_once('../templates/template_warning.php');
 include_once('../database/access_database.php');
 include_once('../database/functions.php');
 
@@ -7,10 +8,15 @@ if (!isset($_SESSION['username'])) {
     die(header('Location: login.php'));
 }
 
+if ($_GET['user'] != $_SESSION['username']) {
+    die(header('Location: login.php'));
+}
+
 $user = getUserData($_GET['user']);
 $photo = get_user_photo($_GET['user']);
 
 template_header();
+template_warning();
 ?>
 <script>
     document.title = "Profile | EasyRent"
@@ -32,19 +38,32 @@ template_header();
                 <a class="button_link" href="../pages/edit_profile.php"><button id="edit_profile">  Edit Profile </button></a>
             <?php } ?>
         </div>
-
+        <?php if ($_GET['user'] == $_SESSION['username']) { ?>
         <div id="data">
             <ul>
                 <li><b><a href="#Reservations" onclick="loadDoc1()">My Reservations</a> </b></li>
                 <li><b><a href="#Places" onclick="loadDoc2()">My Places</a></b></li>
                 <li><b><a href="#FavoritePlaces" onclick="loadDoc3()">Favorite Places</a></b></li>
-                <!--<li><b>Messages</b></li>-->
                 <li><b><a href="#Notifications" onclick="loadDoc4()">Notifications</a></b></li>
             </ul>
             <div id="profile-content">
                 <!-- Profile information will display here -->
             </div>
         </div>
+        <?php } else { 
+            $places = get_places($_GET['user'])?>
+            <div id="data">
+            <ul>
+                <li><b>Places</b></li>
+            </ul>
+            <div id="profile-content">
+                <?php foreach ($places as  $place) {
+                        template_place_small($place);
+                }?>
+            </div>
+        </div>
+
+        <?php } ?>
     </section>
 </section>
 
